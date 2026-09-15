@@ -1,9 +1,12 @@
+Aşağıdaki güncel metnin tamamını GitHub’daki dosyaya yapıştırıp **Commit changes** seçebilirsin. 8. ve 11. maddeleri iletişim, silme ve kullanıcı hakları gerektiği için bıraktım.
+
+markdown
 # Ödev Odak Gizlilik Politikası
 
 **Yürürlük tarihi:** 15.09.2026  
 **Son güncelleme:** 15.09.2026  
 **Veri sorumlusu / yayıncı:** Ödev Odak geliştiricisi (GitHub: cbsoybas)  
-**İletişim:** [Ödev Odak destek sayfası](https://github.com/cbsoybas/odev-odak/issues)
+**İletişim:** [stair-stake1g@icloud.com](stair-stake1g@icloud.com)
 
 Bu Gizlilik Politikası, Ödev Odak adlı iPhone ve iPad uygulamasının ("Uygulama") hangi kişisel verileri, hangi amaçlarla ve hangi hizmet sağlayıcılar aracılığıyla işlediğini açıklar. Uygulamayı kullanarak bu metni okuduğunuzu kabul edersiniz. Zorunlu olmayan özellikler için ayrıca gösterilen izin ve onaylar bu metnin yerine geçmez; ilgili özellik kullanılmadan önce ayrı onay alınır.
 
@@ -131,7 +134,7 @@ Aktarımda HTTPS, oturumlarda Supabase Auth ve cihazdaki oturum bilgilerinde Key
 
 ## 8. Haklarınız ve talepleriniz
 
-Uygulanabilir hukuka göre kişisel verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, itiraz etme, veri taşınabilirliği ve verdiğiniz onayı geri çekme haklarına sahip olabilirsiniz. Talep için [Ödev Odak destek sayfasını](https://github.com/cbsoybas/odev-odak/issues) kullanın. Talebinizi yerine getirebilmek için hesap sahipliği doğrulaması istenebilir. Ayrıca bulunduğunuz ülkedeki veri koruma makamına başvurma hakkınız saklıdır.
+Uygulanabilir hukuka göre kişisel verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, itiraz etme, veri taşınabilirliği ve verdiğiniz onayı geri çekme haklarına sahip olabilirsiniz. Talep için [stair-stake1g@icloud.com](mailto:stair-stake1g@icloud.com) adresine yazabilir veya [Ödev Odak destek sayfasını](https://github.com/cbsoybas/odev-odak/issues) kullanabilirsiniz. Talebinizi yerine getirebilmek için hesap sahipliği doğrulaması istenebilir. Ayrıca bulunduğunuz ülkedeki veri koruma makamına başvurma hakkınız saklıdır.
 
 ## 9. Çocuklar ve yaş sınırlamaları
 
@@ -146,5 +149,6 @@ Hizmet, sağlayıcılar veya mevzuat değiştiğinde bu politikayı güncelleyeb
 Gizlilik soruları, veri talepleri ve silme talepleri için:
 
 **Veri sorumlusu:** Ödev Odak geliştiricisi (GitHub: cbsoybas)  
-**İletişim:** [Ödev Odak destek sayfası](https://github.com/cbsoybas/odev-odak/issues)  
+**İletişim:** [stair-stake1g@icloud.com](mailto:stair-stake1g@icloud.com) · [Ödev Odak destek sayfası](https://github.com/cbsoybas/odev-odak/issues)  
 **Gizlilik politikası URL’si:** https://github.com/cbsoybas/odev-odak-policies/blob/main/GIZLILIK_POLITIKASI.md
+```
