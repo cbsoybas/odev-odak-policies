@@ -1,6 +1,3 @@
-Aşağıdaki güncel metnin tamamını GitHub’daki dosyaya yapıştırıp **Commit changes** seçebilirsin. 8. ve 11. maddeleri iletişim, silme ve kullanıcı hakları gerektiği için bıraktım.
-
-markdown
 # Ödev Odak Gizlilik Politikası
 
 **Yürürlük tarihi:** 15.09.2026  
