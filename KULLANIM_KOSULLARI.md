@@ -3,8 +3,7 @@
 **Yürürlük tarihi:** 15.09.2026  
 **Son güncelleme:** 15.09.2026  
 **Hizmet sağlayıcısı / yayıncı:** Ödev Odak geliştiricisi (GitHub: cbsoybas)  
-**İletişim:** [Ödev Odak destek sayfası](https://github.com/cbsoybas/odev-odak/issues)
-
+**İletişim:** [stair-stake1g@icloud.com](stair-stake1g@icloud.com)
 Bu Kullanım Koşulları, Ödev Odak iPhone ve iPad uygulamasına, uygulamanın sunucularına ve uygulama üzerinden sunulan ödev takibi, Google Classroom bağlantısı, bulut yedeği, ebeveyn bağlantısı, odak modu ve fotoğraf kontrolü özelliklerine (birlikte “Hizmet”) erişiminizi düzenler. Uygulamayı indirerek, açarak veya kullanarak bu koşulları kabul etmiş olursunuz. Kabul etmiyorsanız Hizmeti kullanmayın.
 
 Bu metin hukuk danışmanlığı değildir. Yayıncı adı, iletişim bilgileri, ücretli özellikler, uygulanacak hukuk ve tüketiciye tanınan zorunlu haklar yayınlanmadan önce gerçek işletme bilgileriyle doldurulmalı ve hukuk danışmanı tarafından incelenmelidir.
@@ -104,6 +103,6 @@ Tüketicinin bulunduğu yerdeki emredici hukuk kuralları ve zorunlu tüketici h
 Sorular, bildirimler ve destek talepleri için:
 
 **Hizmet sağlayıcısı:** Ödev Odak geliştiricisi (GitHub: cbsoybas)  
-**İletişim:** [Ödev Odak destek sayfası](https://github.com/cbsoybas/odev-odak/issues)  
+**İletişim:** [stair-stake1g@icloud.com](stair-stake1g@icloud.com)
 **Gizlilik politikası:** https://github.com/cbsoybas/odev-odak-policies/blob/main/GIZLILIK_POLITIKASI.md  
 **Kullanım koşulları:** https://github.com/cbsoybas/odev-odak-policies/blob/main/KULLANIM_KOSULLARI.md
