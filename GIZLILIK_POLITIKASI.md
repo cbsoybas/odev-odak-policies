@@ -3,7 +3,7 @@
 **Yürürlük tarihi:** 15.09.2026  
 **Son güncelleme:** 15.09.2026  
 **Veri sorumlusu / yayıncı:** Ödev Odak geliştiricisi (GitHub: cbsoybas)  
-**İletişim:** [stair-stake1g@icloud.com](stair-stake1g@icloud.com)
+**İletişim:** [destek@odevodak.com](destek@odevodak.com)
 
 Bu Gizlilik Politikası, Ödev Odak adlı iPhone ve iPad uygulamasının ("Uygulama") hangi kişisel verileri, hangi amaçlarla ve hangi hizmet sağlayıcılar aracılığıyla işlediğini açıklar. Uygulamayı kullanarak bu metni okuduğunuzu kabul edersiniz. Zorunlu olmayan özellikler için ayrıca gösterilen izin ve onaylar bu metnin yerine geçmez; ilgili özellik kullanılmadan önce ayrı onay alınır.
 
@@ -131,7 +131,7 @@ Aktarımda HTTPS, oturumlarda Supabase Auth ve cihazdaki oturum bilgilerinde Key
 
 ## 8. Haklarınız ve talepleriniz
 
-Uygulanabilir hukuka göre kişisel verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, itiraz etme, veri taşınabilirliği ve verdiğiniz onayı geri çekme haklarına sahip olabilirsiniz. Talep için [stair-stake1g@icloud.com](stair-stake1g@icloud.com) adresine yazabilirsiniz. Talebinizi yerine getirebilmek için hesap sahipliği doğrulaması istenebilir.
+Uygulanabilir hukuka göre kişisel verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, itiraz etme, veri taşınabilirliği ve verdiğiniz onayı geri çekme haklarına sahip olabilirsiniz. Talep için [destek@odevodak.com](destek@odevodak.com) adresine yazabilirsiniz. Talebinizi yerine getirebilmek için hesap sahipliği doğrulaması istenebilir.
 
 ## 9. Çocuklar ve yaş sınırlamaları
 
@@ -146,6 +146,6 @@ Hizmet, sağlayıcılar veya mevzuat değiştiğinde bu politikayı güncelleyeb
 Gizlilik soruları, veri talepleri ve silme talepleri için:
 
 **Veri sorumlusu:** Ödev Odak geliştiricisi (GitHub: cbsoybas)  
-**İletişim:** [stair-stake1g@icloud.com](stair-stake1g@icloud.com)
+**İletişim:** [destek@odevodak.com](destek@odevodak.com)
 **Gizlilik politikası URL’si:** https://github.com/cbsoybas/odev-odak-policies/blob/main/GIZLILIK_POLITIKASI.md
 ```
