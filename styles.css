@@ -1,0 +1,28 @@
+
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#172033;background:#f7f9fc;line-height:1.65}
+*{box-sizing:border-box}
+body{margin:0}
+a{color:#2457d6}
+header{background:#fff;border-bottom:1px solid #e7ebf2;position:sticky;top:0;z-index:10}
+.nav{max-width:980px;margin:auto;padding:16px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:800;color:#111827;text-decoration:none;margin-right:auto}
+.nav a:not(.brand){text-decoration:none;color:#4b5563;font-weight:600}
+main{max-width:900px;margin:42px auto;padding:0 20px 60px}
+.hero{background:#fff;border:1px solid #e7ebf2;border-radius:22px;padding:44px;box-shadow:0 10px 30px rgba(25,40,80,.06)}
+.hero h1{font-size:clamp(34px,6vw,56px);line-height:1.05;margin:0 0 18px}
+.hero p{font-size:18px;color:#5b6474;max-width:680px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px}
+.card{display:block;background:#fff;border:1px solid #e7ebf2;border-radius:18px;padding:22px;text-decoration:none;color:#172033}
+.card:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(25,40,80,.06)}
+.card h2{font-size:18px;margin:0 0 8px}
+.card p{margin:0;color:#687184}
+.doc{background:#fff;border:1px solid #e7ebf2;border-radius:20px;padding:34px;box-shadow:0 10px 30px rgba(25,40,80,.04)}
+.doc h1{font-size:34px;line-height:1.2;margin-top:0}
+.doc h2{font-size:24px;margin-top:34px;border-top:1px solid #edf0f5;padding-top:26px}
+.doc h3{font-size:19px;margin-top:26px}
+.doc p,.doc li{color:#374151}
+.doc code{background:#f2f4f8;padding:2px 5px;border-radius:6px}
+.notice{background:#eef4ff;border:1px solid #dbe7ff;border-radius:14px;padding:16px 18px;margin:20px 0}
+.button{display:inline-block;background:#111827;color:#fff!important;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:12px}
+footer{max-width:900px;margin:0 auto;padding:0 20px 40px;color:#7b8495;font-size:14px}
+@media(max-width:640px){.hero,.doc{padding:24px}.nav{gap:12px}.nav a:not(.brand){font-size:14px}}
