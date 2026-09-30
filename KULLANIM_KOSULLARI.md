@@ -1,7 +1,7 @@
 # Ödev Odak Kullanım Koşulları
 
 **Yürürlük tarihi:** 15.09.2026  
-**Son güncelleme:** 15.09.2026  
+**Son güncelleme:** 29.09.2026  
 **Hizmet sağlayıcısı / yayıncı:** Ödev Odak geliştiricisi (GitHub: cbsoybas)  
 **İletişim:** [destek@odevodak.com](destek@odevodak.com)
 Bu Kullanım Koşulları, Ödev Odak iPhone ve iPad uygulamasına, uygulamanın sunucularına ve uygulama üzerinden sunulan ödev takibi, Google Classroom bağlantısı, bulut yedeği, ebeveyn bağlantısı, odak modu ve fotoğraf kontrolü özelliklerine (birlikte “Hizmet”) erişiminizi düzenler. Uygulamayı indirerek, açarak veya kullanarak bu koşulları kabul etmiş olursunuz. Kabul etmiyorsanız Hizmeti kullanmayın.
@@ -62,7 +62,16 @@ Ebeveyn kontrolü isteğe bağlıdır. Öğrenci ve ebeveyn hesapları bağlant�
 
 Ebeveynin gönderdiği düzenleme veya odak komutları öğrenci cihazında eşitlenebilir. Öğrenci cihazındaki “Kişisel odak izni” anahtarı kapalıysa ebeveynin odak kuralı uygulanmaz. İzin ve uygulama seçimi her cihazda Apple tarafından ayrı yönetilir.
 
-## 8. Kabul edilebilir kullanım
+## 8. Premium satın alma ve reklamlar
+
+- Ödev Odak Premium, App Store üzerinden sunulan tek seferlik bir uygulama içi satın almadır; abonelik değildir. Fiyat satın almadan önce App Store’da gösterilir ve ödeme Apple tarafından alınır.
+- Premium, satın almayı yaptığınız Ödev Odak hesabına bağlanır ve bu hesapla giriş yaptığınız cihazlarda kullanılabilir. Premium başka bir hesaba devredilemez; hesabınızı silerseniz Premium da sona erer.
+- Satın almanızı Premium ekranındaki “Satın alımları geri yükle” seçeneğiyle yeniden etkinleştirebilirsiniz. Satın alma yalnızca bir Ödev Odak hesabına bağlanabilir.
+- İade talepleri Apple’ın kendi koşullarına göre Apple tarafından değerlendirilir (reportaproblem.apple.com). İade edilen satın almada Premium kapatılır.
+- Premium kapsamındaki özellikler zaman içinde geliştirilebilir veya değiştirilebilir. Kanunen tanınan tüketici hakları saklıdır.
+- Premium olmayan kullanıcılara Uygulamada Google AdMob aracılığıyla reklam gösterilebilir. Premium etkinken reklam gösterilmez.
+
+## 9. Kabul edilebilir kullanım
 
 Şunları yapmayacağınızı kabul edersiniz:
 
@@ -74,29 +83,29 @@ Ebeveynin gönderdiği düzenleme veya odak komutları öğrenci cihazında eşi
 - Hizmeti yasa dışı, zararlı, taciz edici veya başkalarının haklarını ihlal eden amaçlarla kullanmak;
 - Gemini veya başka bir sağlayıcının şartlarını aşmaya veya yaş sınırlamasını dolanmaya çalışmak.
 
-## 9. Üçüncü taraf hizmetler
+## 10. Üçüncü taraf hizmetler
 
 Apple, Google, Google Classroom, Supabase ve yapay zekâ sağlayıcıları kendi hizmet şartlarına ve gizlilik politikalarına tabidir. Bu sağlayıcıların kesintileri, erişim kısıtları, politika değişiklikleri, kota sınırları veya hesap kapatmaları Ödev Odak’ın kontrolü dışındadır. Üçüncü taraf şartlarına uymak sizin sorumluluğunuzdadır.
 
-## 10. Fikri mülkiyet
+## 11. Fikri mülkiyet
 
 Uygulama, adı, logosu, arayüzü, yazılımı ve içerikleri Ödev Odak geliştiricisi veya lisans verenlerine aittir. Bu Koşullar size yalnızca kişisel ve koşullara uygun kullanım için sınırlı, devredilemez ve geri alınabilir bir kullanım hakkı verir. Ödev metni ve fotoğraflarınızın mülkiyeti sizde kalır; Hizmeti sağlamak için gerekli sınırlı teknik kullanım iznini bize verirsiniz.
 
-## 11. Hizmetin değişmesi veya sona ermesi
+## 12. Hizmetin değişmesi veya sona ermesi
 
 Güvenlik, bakım, yasal gereklilik, sağlayıcı değişikliği veya yeni özellikler için Hizmeti değiştirebilir, geçici olarak durdurabilir veya sonlandırabiliriz. Önemli değişikliklerde uygulanabilir hukuka göre bildirim yaparız. Hesabınız veya bu Koşullar ihlal edilirse erişimi askıya alabiliriz; mümkün olan durumlarda nedeni ve yeniden etkinleştirme yolunu bildiririz.
 
-## 12. Sorumluluk sınırları
+## 13. Sorumluluk sınırları
 
 Hizmet, makul özenle ve mevcut teknik olanaklar kapsamında sunulur. Yapay zekâ sonucu, Classroom eşitlemesi, yedekleme, odak sınırı veya üçüncü taraf hizmetlerin kesintisiz ve hatasız olacağı garanti edilmez. Okul teslim tarihlerini, resmi teslimleri ve önemli ödevleri yalnızca uygulamaya bırakmayın.
 
 Uygulanabilir emredici tüketici hakları saklı kalmak üzere, yayıncı; kasıt, ağır kusur veya kanunen sınırlandırılamayan sorumluluklar dışında, Hizmetin kullanımından veya kullanılamamasından doğan dolaylı zararlar, veri kaybı, not kaybı veya gecikmiş teslimlerden sorumlu tutulamaz. Bu madde, kanunen sahip olduğunuz hakları ortadan kaldırmaz.
 
-## 13. Koşullardaki değişiklikler
+## 14. Koşullardaki değişiklikler
 
 Bu Koşulları Hizmetin veya mevzuatın değişmesi halinde güncelleyebiliriz. Güncel sürüm [Kullanım Koşulları sayfasında](https://github.com/cbsoybas/odev-odak-policies/blob/main/KULLANIM_KOSULLARI.md) ve uygulama içindeki Yardım ve gizlilik bölümünde yayınlanır. Önemli değişikliklerde uygulanabilir hukuka göre yeniden onay istenebilir. Güncellemeden sonra Hizmeti kullanmaya devam etmeniz, yürürlükteki yeni metni kabul ettiğiniz anlamına gelir.
 
-## 14. Uygulanacak hukuk ve iletişim
+## 15. Uygulanacak hukuk ve iletişim
 
 Tüketicinin bulunduğu yerdeki emredici hukuk kuralları ve zorunlu tüketici hakları saklıdır. Uyuşmazlıklarda uygulanabilir yerel hukuk ve yetkili merciler geçerlidir.
 
