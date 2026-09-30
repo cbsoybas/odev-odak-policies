@@ -2,32 +2,343 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ana Sayfa | Ödev Odak</title>
-<meta name="description" content="Ödev Odak uygulamasının resmi destek ve politika sitesi.">
-<link rel="stylesheet" href="/styles.css">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ödev Odak · Önce ödev, sonra her şey</title>
+<meta name="description" content="Ödev Odak, ödevlerini takip eden ve ödevlerin bitene kadar dikkat dağıtan uygulamaları sınırlayan iPhone ve iPad uygulamasıdır.">
+<meta name="theme-color" content="#15122E">
+<meta property="og:title" content="Ödev Odak · Önce ödev, sonra her şey">
+<meta property="og:description" content="Ödevlerini ekle, dikkat dağıtan uygulamaları seç. Ödevlerin bitince hepsi kendiliğinden açılır.">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+/* Layout: gece masası. Solda iddia, sağda ödevleri kendi kendine bitiren canlı telefon; altta sırayla nasıl çalışır, özellikler, Premium ve destek. */
+:root {
+  --ink: #15122E;          /* sayfa zemini, Premium mürekkebi */
+  --ink-2: #1E1A44;        /* yüzeyler */
+  --ink-3: #2A2560;        /* çizgiler, telefon kasası */
+  --paper: #F5F3FF;        /* ana metin */
+  --muted: #A9A4D6;        /* ikincil metin */
+  --indigo: #6366F1;       /* uygulamanın indigo vurgusu, koyu zeminde okunur ton */
+  --lavender: #C7D2FE;
+  --gold: #FBBF24;         /* seri alevi ve Premium */
+  --green: #34D399;        /* tamamlandı */
+  --display: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --step-0: clamp(1rem, .96rem + .2vw, 1.0625rem);
+  --step-1: clamp(1.2rem, 1.1rem + .5vw, 1.45rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.4vw, 2.3rem);
+  --step-3: clamp(2.5rem, 1.7rem + 4vw, 4.6rem);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--ink); color: var(--paper);
+  font: 400 var(--step-0)/1.6 var(--body);
+  padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px);
+  overflow-x: hidden;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 10px; }
+img { max-width: 100%; }
+.wrap { width: min(1120px, 100%); margin-inline: auto; padding-inline: 20px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+p { margin: 0; }
+
+/* Lamba ışığı: sayfanın tepesinde sabit, yumuşak bir sıcak ışık */
+.glow { position: absolute; inset: 0 0 auto 0; height: 900px; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(520px 380px at 78% 18%, rgba(251,191,36,.13), transparent 70%),
+    radial-gradient(700px 520px at 70% 30%, rgba(99,102,241,.22), transparent 70%); }
+
+/* Üst menü */
+header { position: relative; z-index: 2; }
+.nav { display: flex; align-items: center; gap: 22px; padding-block: 22px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 1.15rem; margin-right: auto; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; }
+.nav a:not(.brand) { text-decoration: none; color: var(--muted); font-size: .95rem; }
+.nav a:not(.brand):hover { color: var(--paper); }
+
+/* Giriş */
+.hero { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; padding-block: 36px 90px; }
+.hero > * { min-width: 0; }
+.eyebrow { font: 600 .8rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 8px; }
+.eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+.hero h1 { font-size: var(--step-3); line-height: 1.02; font-weight: 800; margin-top: 18px; }
+.hero h1 span { color: var(--gold); }
+.lede { margin-top: 22px; max-width: 34ch; font-size: var(--step-1); line-height: 1.5; color: var(--muted); }
+.lede b { color: var(--paper); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.store { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border-radius: 14px; background: var(--paper); color: var(--ink); text-decoration: none; font-weight: 700; transition: transform .2s ease; }
+.store:hover { transform: translateY(-2px); }
+.store svg { width: 22px; height: 22px; }
+.ghost { display: inline-flex; align-items: center; padding: 13px 18px; border-radius: 14px; border: 1px solid var(--ink-3); text-decoration: none; color: var(--paper); }
+.ghost:hover { border-color: var(--indigo); }
+.fine { margin-top: 16px; font-size: .85rem; color: var(--muted); }
+
+/* Canlı telefon */
+.stage { position: relative; display: grid; place-items: center; min-height: 600px; }
+.orbit { position: absolute; border-radius: 50%; border: 1px dashed rgba(199,210,254,.18); }
+.orbit.o1 { width: 470px; height: 470px; animation: spin 60s linear infinite; }
+.orbit.o2 { width: 600px; height: 600px; animation: spin 90s linear infinite reverse; border-style: dotted; }
+.orbit i { position: absolute; top: -7px; left: 50%; width: 14px; height: 14px; border-radius: 50%; background: var(--indigo); box-shadow: 0 0 18px var(--indigo); }
+.orbit.o2 i { background: var(--gold); box-shadow: 0 0 18px var(--gold); top: auto; bottom: 18%; left: 4%; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.phone { position: relative; width: 300px; max-width: 100%; aspect-ratio: 300 / 610; border-radius: 46px; padding: 12px;
+  background: linear-gradient(160deg, #3A3480, var(--ink-3) 40%, #120F29); box-shadow: 0 40px 80px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.08); }
+.screen { position: relative; height: 100%; border-radius: 36px; overflow: hidden; background: #F8FAFC; color: #0F172A; padding: 46px 16px 16px; display: flex; flex-direction: column; gap: 12px; }
+.island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 92px; height: 26px; border-radius: 20px; background: #000; }
+.bar { display: flex; justify-content: space-between; align-items: center; }
+.bar h3 { font-size: 1.35rem; font-weight: 800; }
+.flame { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 999px; background: #FFF7E6; color: #B45309; font: 700 .85rem/1 var(--display); }
+.flame svg { width: 15px; height: 15px; transform-origin: 50% 90%; animation: flicker 1.4s ease-in-out infinite; }
+.flame.bump { animation: bump .6s ease; }
+@keyframes flicker { 0%,100% { transform: scale(1) rotate(-2deg); } 50% { transform: scale(1.12) rotate(3deg); } }
+@keyframes bump { 40% { transform: scale(1.25); } }
+
+.lock { border-radius: 20px; padding: 14px; background: #4F46E5; color: #fff; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: center; transition: background .5s ease; }
+.lock .ic { grid-row: span 2; width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.18); display: grid; place-items: center; }
+.lock .ic svg { width: 20px; height: 20px; }
+.lock .shackle { transition: transform .45s cubic-bezier(.3,1.6,.5,1); transform-origin: 16px 10px; }
+.lock b { font: 700 .95rem/1.2 var(--display); }
+.lock small { font-size: .74rem; opacity: .85; line-height: 1.3; }
+.lock.open { background: #059669; }
+.lock.open .shackle { transform: translateY(-3px) rotate(-28deg); }
+.apps { display: flex; gap: 6px; }
+.apps span { flex: 1; height: 30px; border-radius: 9px; background: #E2E8F0; display: grid; place-items: center; font-size: .62rem; font-weight: 700; color: #64748B; transition: background .4s ease, color .4s ease, filter .4s ease; filter: grayscale(1); }
+.lock.open ~ .apps span { background: #EEF2FF; color: #4F46E5; filter: none; }
+
+.label { font: 600 .68rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #64748B; }
+.tasks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.task { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 14px; background: #fff; box-shadow: 0 1px 0 #E8EBF2, 0 4px 14px rgba(15,23,42,.05); transition: opacity .4s ease; }
+.task .box { width: 22px; height: 22px; border-radius: 7px; border: 2px solid #CBD5E1; display: grid; place-items: center; transition: background .25s ease, border-color .25s ease; }
+.task .box svg { width: 14px; height: 14px; stroke: #fff; stroke-width: 3; fill: none; stroke-dasharray: 20; stroke-dashoffset: 20; transition: stroke-dashoffset .35s ease .1s; }
+.task div { min-width: 0; }
+.task strong { display: block; font-size: .82rem; line-height: 1.25; }
+.task em { font-style: normal; font-size: .68rem; color: #64748B; }
+.task time { font: 600 .68rem/1 var(--mono); color: #64748B; }
+.task.done { opacity: .6; }
+.task.done strong { text-decoration: line-through; text-decoration-color: #94A3B8; }
+.task.done .box { background: #4F46E5; border-color: #4F46E5; }
+.task.done .box svg { stroke-dashoffset: 0; }
+.task .cam { font-size: .6rem; font-weight: 700; color: #059669; background: #ECFDF5; padding: 3px 6px; border-radius: 6px; opacity: 0; transition: opacity .3s ease; }
+.task.done .cam { opacity: 1; }
+.progress { margin-top: auto; height: 8px; border-radius: 99px; background: #E2E8F0; overflow: hidden; }
+.progress i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #4F46E5, #818CF8); border-radius: inherit; transition: width .5s ease; }
+
+/* Bölümler */
+section { position: relative; z-index: 1; }
+.block { padding-block: 70px; border-top: 1px solid rgba(199,210,254,.1); }
+.block h2 { font-size: var(--step-2); font-weight: 800; }
+.block .intro { margin-top: 12px; max-width: 58ch; color: var(--muted); }
+
+.steps { list-style: none; padding: 0; margin: 40px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: step; }
+.steps li { min-width: 0; counter-increment: step; }
+.steps li::before { content: counter(step); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--ink-3); font: 800 1.1rem/1 var(--display); color: var(--gold); margin-bottom: 16px; }
+.steps h3 { font-size: 1.15rem; }
+.steps p { margin-top: 8px; color: var(--muted); }
+
+.features { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(199,210,254,.1); border-radius: 22px; overflow: hidden; }
+.feature { background: var(--ink); padding: 26px; min-width: 0; transition: background .25s ease; }
+.feature:hover { background: var(--ink-2); }
+.feature svg { width: 26px; height: 26px; stroke: var(--lavender); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .3s ease, stroke .3s ease; }
+.feature:hover svg { transform: translateY(-3px); stroke: var(--gold); }
+.feature h3 { margin-top: 14px; font-size: 1.08rem; }
+.feature p { margin-top: 6px; color: var(--muted); font-size: .95rem; }
+
+/* Premium */
+.premium { margin-top: 10px; border-radius: 28px; padding: clamp(24px, 4vw, 48px); background: linear-gradient(135deg, #2A2266, var(--ink-2) 60%); border: 1px solid rgba(251,191,36,.25); display: grid; grid-template-columns: .9fr 1.1fr; gap: 36px; align-items: start; }
+.premium > * { min-width: 0; }
+.premium h2 { font-size: var(--step-2); }
+.premium h2 span { color: var(--gold); }
+.premium .intro { color: var(--muted); margin-top: 12px; }
+.chips { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.chips li { padding: 12px 14px; border-radius: 14px; background: rgba(21,18,46,.55); border: 1px solid rgba(199,210,254,.12); font-size: .95rem; display: flex; gap: 10px; align-items: center; min-width: 0; }
+.chips li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.plans { margin-top: 18px; color: var(--muted); font-size: .92rem; }
+
+/* Destek ve politikalar */
+.links { margin-top: 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.links a { min-width: 0; text-decoration: none; padding: 20px; border-radius: 18px; border: 1px solid var(--ink-3); transition: border-color .2s ease, transform .2s ease; }
+.links a:hover { border-color: var(--indigo); transform: translateY(-2px); }
+.links h3 { font-size: 1rem; }
+.links p { margin-top: 6px; color: var(--muted); font-size: .9rem; }
+
+footer { position: relative; z-index: 1; padding-block: 34px 44px; color: var(--muted); font-size: .9rem; border-top: 1px solid rgba(199,210,254,.1); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; padding-block: 16px 60px; }
+  .stage { min-height: 560px; }
+  .premium { grid-template-columns: 1fr; }
+  .links { grid-template-columns: repeat(2, 1fr); }
+  .features { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .nav { gap: 14px; }
+  .nav .brand { width: 100%; }
+  .steps, .features, .chips, .links { grid-template-columns: 1fr; }
+  .orbit.o2 { display: none; }
+  .orbit.o1 { width: 360px; height: 360px; }
+  .stage { min-height: 540px; }
+  .phone { width: 270px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
 </head>
 <body>
+<div class="glow" aria-hidden="true"></div>
 <header>
-  <nav class="nav">
-    <a class="brand" href="/">Ödev Odak</a>
-    <a href="/privacy/">Gizlilik</a>
-    <a href="/terms/">Koşullar</a>
+  <nav class="nav wrap" aria-label="Ana menü">
+    <a class="brand" href="/"><img id="logo" alt="" width="34" height="34">Ödev Odak</a>
+    <a href="#nasil">Nasıl çalışır</a>
+    <a href="#premium">Premium</a>
     <a href="/support/">Destek</a>
-    <a href="/account-deletion/">Hesap Silme</a>
+    <a href="/privacy/">Gizlilik</a>
   </nav>
 </header>
-<main><section class="hero">
-    <h1>Ödevlerini düzenle.<br>Odağını koru.</h1>
-    <p>Ödev Odak; ödevlerini takip etmene, isteğe bağlı Google Classroom bağlantısını kullanmana ve odak özelliklerini yönetmene yardımcı olan iPhone ve iPad uygulamasıdır.</p>
-    <a class="button" href="mailto:destek@odevodak.com">Destek ile iletişime geç</a>
+
+<main>
+  <section class="hero wrap">
+    <div>
+      <span class="eyebrow">iPhone ve iPad için</span>
+      <h1>Önce ödev.<br><span>Sonra her şey.</span></h1>
+      <p class="lede">Ödevlerini ekle, dikkatini dağıtan uygulamaları seç. <b>Ödevlerin bitene kadar onlar bekler,</b> bitince kendiliğinden açılır.</p>
+      <div class="cta">
+        <a class="store" href="https://apps.apple.com/tr/app/id6811425764">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.7 1.3-2.7s-2.4-1-2.4-4ZM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4Z"/></svg>
+          App Store’dan indir
+        </a>
+        <a class="ghost" href="#nasil">Nasıl çalışır?</a>
+      </div>
+      <p class="fine">Ücretsiz. İstersen Premium ile istatistikler, sınav sayacı, temalar ve reklamsız kullanım.</p>
+    </div>
+
+    <div class="stage" aria-label="Uygulamanın canlı önizlemesi: ödevler işaretlendikçe kilitli uygulamalar açılıyor">
+      <div class="orbit o2" aria-hidden="true"><i></i></div>
+      <div class="orbit o1" aria-hidden="true"><i></i></div>
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="bar">
+            <h3>Bugün</h3>
+            <span class="flame" id="flame"><svg viewBox="0 0 24 24"><path fill="#F59E0B" d="M12 2s5 4.6 5 9.6A5 5 0 0 1 7 11.7c0-2 1-3.5 1-3.5s.4 2.3 2.2 2.3C10.2 6.4 12 2 12 2Z"/><path fill="#FBBF24" d="M12 12s2.5 1.7 2.5 4a2.5 2.5 0 0 1-5 0c0-2.3 2.5-4 2.5-4Z"/></svg><span id="streak">6</span> gün</span>
+          </div>
+          <div class="lock" id="lock">
+            <span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path class="shackle" d="M10 14v-4a6 6 0 0 1 12 0v4"/><rect x="7" y="14" width="18" height="13" rx="3" fill="#fff" stroke="none"/></svg></span>
+            <b id="lockTitle">Odak modu açık</b>
+            <small id="lockText">3 ödev kaldı. Bitince uygulamaların açılır.</small>
+          </div>
+          <div class="apps"><span>Oyunlar</span><span>Video</span><span>Sosyal</span></div>
+          <span class="label">Bugünkü ödevler</span>
+          <ul class="tasks" id="tasks">
+            <li class="task"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><div><strong>Matematik · Türev testi</strong><em>Google Classroom</em></div><span class="cam">Fotoğraflı</span></li>
+            <li class="task"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><div><strong>Kimya · Mol problemleri</strong><em>Sayfa 84–86</em></div><span class="cam">Fotoğraflı</span></li>
+            <li class="task"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><div><strong>Edebiyat · Kompozisyon</strong><em>Yarın teslim</em></div><span class="cam">Fotoğraflı</span></li>
+          </ul>
+          <div class="progress"><i id="bar"></i></div>
+        </div>
+      </div>
+    </div>
   </section>
-  <section class="cards">
-    <a class="card" href="/privacy/"><h2>Gizlilik Politikası</h2><p>Verilerin nasıl işlendiğini ve hangi hizmetlerin kullanıldığını incele.</p></a>
-    <a class="card" href="/terms/"><h2>Kullanım Koşulları</h2><p>Ödev Odak hizmetinin kullanım şartlarını incele.</p></a>
-    <a class="card" href="/support/"><h2>Destek</h2><p>Uygulamayla ilgili yardım veya geri bildirim için iletişime geç.</p></a>
-    <a class="card" href="/account-deletion/"><h2>Hesap Silme</h2><p>Ödev Odak hesabını ve ilişkili verileri nasıl silebileceğini öğren.</p></a>
-  </section></main>
-<footer>© 2026 Ödev Odak · <a href="mailto:destek@odevodak.com">destek@odevodak.com</a></footer>
+
+  <section class="block wrap" id="nasil">
+    <h2>Üç adımda odak</h2>
+    <p class="intro">Ödev Odak yasakçı değil. Kuralı sen koyarsın, uygulama sadece sözünü tutmana yardım eder.</p>
+    <ol class="steps">
+      <li><h3>Ödevlerini ekle</h3><p>Elle yaz ya da Google Classroom’u bağla, ödevlerin teslim tarihleriyle kendiliğinden gelsin.</p></li>
+      <li><h3>Neyin bekleyeceğini seç</h3><p>Oyunlar, videolar, sosyal medya. Seçtiğin uygulamalar bugünkü ve gecikmiş ödevlerin bitene kadar sınırlanır.</p></li>
+      <li><h3>Bitir, işaretle, rahatla</h3><p>Ödevini tamamlayınca fotoğrafla doğrula. Son ödev bittiğinde uygulamaların açılır, serin bir gün uzar.</p></li>
+    </ol>
+  </section>
+
+  <section class="block wrap">
+    <h2>Ödev takibinin ihtiyacı olan her şey</h2>
+    <div class="features">
+      <div class="feature"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 9h8M8 13h5"/></svg><h3>Google Classroom</h3><p>Sınıflarındaki ödevler otomatik içe aktarılır, teslim ettiklerin tamamlanmış sayılır.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><h3>Odak modu</h3><p>iPhone’un Ekran Süresi altyapısıyla seçtiğin uygulamalar ödevler bitene kadar bekler.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><h3>Fotoğrafla doğrulama</h3><p>Bitirdiğin ödevin fotoğrafını çek, tamamlandığını kanıtla.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><path d="M12 3s5 4.5 5 9.5a5 5 0 0 1-10 0C7 10 8.5 8 8.5 8s.5 2.5 2.5 2.5C11 6.5 12 3 12 3Z"/></svg><h3>Seri takibi</h3><p>Her gün ödevlerini bitirdikçe serin uzar. Alışkanlık küçük adımlarla kurulur.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3 2.2-5 5-5s5 2 5 5M14 20c0-2.4 1.3-4 3-4s3 1.6 3 4"/></svg><h3>Ebeveyn kontrolü</h3><p>İsteğe bağlı. Aile hesabını bağlarsan ödev durumu paylaşılır ve odak desteklenir.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.5-8 5.5 5.5 0 0 1 10.6-1.5A4.5 4.5 0 0 1 17 18z"/><path d="M12 11v5M9.5 13.5 12 11l2.5 2.5"/></svg><h3>Bulut yedeği</h3><p>Hesabınla giriş yaptığında ödevlerin yedeklenir, telefon değişse de kaybolmaz.</p></div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="premium">
+    <div class="premium">
+      <div>
+        <span class="eyebrow">Ödev Odak Premium</span>
+        <h2 style="margin-top:14px">Daha düzenli çalış, <span>ilerlemeni gör.</span></h2>
+        <p class="intro">Premium Ödev Odak hesabına bağlanır. Aynı hesapla giriş yaptığın her cihazda açılır.</p>
+        <p class="plans">Aylık, yıllık ya da tek seferlik ömür boyu. Abonelikleri App Store ayarlarından istediğin zaman iptal edebilirsin.</p>
+      </div>
+      <ul class="chips">
+        <li>İstatistikler ve seri takvimi</li>
+        <li>Çalışma planı</li>
+        <li>Odak zamanlayıcısı ve Dinamik Ada</li>
+        <li>Sınav geri sayımı</li>
+        <li>Rozetler ve seri kalkanı</li>
+        <li>Ana ekran widget’ları</li>
+        <li>Temalar ve uygulama simgeleri</li>
+        <li>Reklamsız kullanım</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block wrap" id="destek">
+    <h2>Destek ve politikalar</h2>
+    <div class="links">
+      <a href="/support/"><h3>Destek</h3><p>Yardım veya geri bildirim için bize yaz.</p></a>
+      <a href="/privacy/"><h3>Gizlilik Politikası</h3><p>Verilerin nasıl işlendiğini ve hangi hizmetlerin kullanıldığını incele.</p></a>
+      <a href="/terms/"><h3>Kullanım Koşulları</h3><p>Ödev Odak hizmetinin kullanım şartları.</p></a>
+      <a href="/account-deletion/"><h3>Hesap Silme</h3><p>Hesabını ve ilişkili verileri nasıl sileceğini öğren.</p></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ödev Odak</span>
+    <a href="mailto:destek@odevodak.com">destek@odevodak.com</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  document.getElementById('logo').src = document.querySelector('link[rel=icon]').href;
+  var tasks = document.querySelectorAll('#tasks .task');
+  var lock = document.getElementById('lock');
+  var title = document.getElementById('lockTitle');
+  var text = document.getElementById('lockText');
+  var bar = document.getElementById('bar');
+  var flame = document.getElementById('flame');
+  var streak = document.getElementById('streak');
+  var total = tasks.length;
+
+  function show(done) {
+    tasks.forEach(function (t, i) { t.classList.toggle('done', i < done); });
+    bar.style.width = (done / total * 100) + '%';
+    var left = total - done;
+    lock.classList.toggle('open', left === 0);
+    title.textContent = left === 0 ? 'Uygulamaların açıldı' : 'Odak modu açık';
+    text.textContent = left === 0 ? 'Bugünkü ödevlerin bitti. Tebrikler!' : left + ' ödev kaldı. Bitince uygulamaların açılır.';
+    streak.textContent = left === 0 ? '7' : '6';
+    if (left === 0) { flame.classList.remove('bump'); void flame.offsetWidth; flame.classList.add('bump'); }
+  }
+
+  // Hareketi azaltanlar son hali sabit görür.
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { show(total); return; }
+
+  var step = 0;
+  show(0);
+  setInterval(function () {
+    step = (step + 1) % (total + 3);
+    show(Math.min(step, total));
+  }, 1700);
+})();
+</script>
 </body>
 </html>
