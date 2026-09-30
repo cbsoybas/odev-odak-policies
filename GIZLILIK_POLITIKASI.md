@@ -78,11 +78,11 @@ Odak modu için seçtiğiniz uygulama, kategori ve web alanı seçimleri Apple F
 
 ### 2.8. Premium satın alma
 
-Ödev Odak Premium, App Store üzerinden tek seferlik bir uygulama içi satın almadır. Ödeme Apple tarafından alınır; kart veya ödeme bilgileriniz bize iletilmez.
+Ödev Odak Premium, App Store üzerinden aylık veya yıllık otomatik yenilenen abonelik ya da tek seferlik ömür boyu satın alma olarak sunulur. Ödeme Apple tarafından alınır; kart veya ödeme bilgileriniz bize iletilmez.
 
-Premium, satın almayı yaptığınız Ödev Odak hesabına bağlanır ve aynı hesapla giriş yaptığınız cihazlarda açılır. Bunun için satın alma sırasında hesabınızın kimliği Apple’a satın alma işaretçisi (appAccountToken) olarak iletilir. Satın almadan sonra Apple’ın imzaladığı işlem bilgisi sunucumuza gönderilir, imzası doğrulanır ve şu bilgiler hesabınızla birlikte Supabase’de saklanır: App Store işlem numarası, ürün, ortam (canlı veya test) ve satın alma tarihi. Hesabınızda Premium’un açık olduğu bilgisi oturum bilgilerinize eklenir.
+Premium, satın almayı yaptığınız Ödev Odak hesabına bağlanır ve aynı hesapla giriş yaptığınız cihazlarda açılır. Bunun için satın alma sırasında hesabınızın kimliği Apple’a satın alma işaretçisi (appAccountToken) olarak iletilir. Satın almadan sonra Apple’ın imzaladığı işlem bilgisi sunucumuza gönderilir, imzası doğrulanır ve şu bilgiler hesabınızla birlikte Supabase’de saklanır: App Store işlem numarası, ürün, ortam (canlı veya test), satın alma tarihi ve aboneliklerde geçerlilik bitiş tarihi. Hesabınızda Premium’un açık olduğu bilgisi ve varsa abonelik bitiş tarihi oturum bilgilerinize eklenir.
 
-Apple, iade veya iptal gibi durumlarda App Store Server Notifications aracılığıyla sunucumuza imzalı bildirim gönderir. İade edilen satın almada Premium kapatılır ve aynı satın alma başka bir hesaba bağlanamaz.
+Apple; yenileme, sona erme, iade veya iptal gibi durumlarda App Store Server Notifications aracılığıyla sunucumuza imzalı bildirim gönderir. Abonelik yenilendiğinde bitiş tarihi güncellenir; sona eren veya iade edilen satın almada Premium kapatılır. İade edilen satın alma başka bir hesaba bağlanamaz.
 
 ### 2.9. Reklamlar
 
@@ -138,7 +138,7 @@ Veriler reklam profili oluşturmak veya satılmak amacıyla paylaşılmaz. Gerç
 - Cihazdaki ödevler, siz silene, uygulamayı kaldırana veya hesabınızı silene kadar cihazda kalabilir.
 - Fotoğraf kontrolü için gönderilen görüntüler kalıcı ödev yedeğine eklenmez; geçici işleme, teknik günlük ve üçüncü taraf saklama süresi sağlayıcının yapılandırmasına göre değişebilir.
 - Ebeveyn bağlantısının verileri bağlantı sonlandırılınca yeni paylaşıma kapatılır; yasal, güvenlik veya yedekleme gerekleri için tutulması gereken kayıtlar ilgili süre sonunda silinir.
-- Premium satın alma kaydı hesabınız açık kaldığı sürece tutulur; hesabınızı sildiğinizde satın alma kaydı da silinir ve Premium bu hesapla birlikte sona erer. Apple kendi satın alma kayıtlarını kendi politikasına göre saklar.
+- Premium satın alma kaydı hesabınız açık kaldığı sürece tutulur; hesabınızı sildiğinizde satın alma kaydı da silinir ve Premium bu hesapla birlikte sona erer. Hesabı silmek aktif bir aboneliği iptal etmez; aboneliği Apple üzerinden ayrıca iptal etmeniz gerekir. Apple kendi satın alma kayıtlarını kendi politikasına göre saklar.
 - Hesap silme işlemi Ayarlar → Hesabı sil bölümünden başlatılabilir. İşlem Supabase hesabını, bu hesaba ait bulut yedeğini, aile bağlantılarını ve uygulamanın cihazdaki hesap verilerini siler. Classroom’daki veriler Google hesabında kaldığından Google Classroom’dan ayrıca silinmelidir.
 
 Silinen veriler yedeklerden, günlüklerden veya yasal kayıt sistemlerinden hemen ve fiziksel olarak aynı anda yok olmayabilir; bu kayıtlar yalnızca gerekli süre boyunca korunur ve sonrasında silinir veya anonimleştirilir.
