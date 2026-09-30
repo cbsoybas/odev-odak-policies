@@ -64,8 +64,9 @@ Ebeveynin gönderdiği düzenleme veya odak komutları öğrenci cihazında eşi
 
 ## 8. Premium satın alma ve reklamlar
 
-- Ödev Odak Premium, App Store üzerinden sunulan tek seferlik bir uygulama içi satın almadır; abonelik değildir. Fiyat satın almadan önce App Store’da gösterilir ve ödeme Apple tarafından alınır.
-- Premium, satın almayı yaptığınız Ödev Odak hesabına bağlanır ve bu hesapla giriş yaptığınız cihazlarda kullanılabilir. Premium başka bir hesaba devredilemez; hesabınızı silerseniz Premium da sona erer.
+- Ödev Odak Premium; aylık ve yıllık otomatik yenilenen abonelikler ile tek seferlik ömür boyu satın alma olarak sunulur. Fiyatlar satın almadan önce App Store’da gösterilir ve ödeme Apple tarafından alınır.
+- Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmedikçe aynı süre ve fiyatla otomatik olarak yenilenir; yenileme ücreti dönem bitmeden önceki 24 saat içinde Apple hesabınızdan alınır. Aboneliğinizi iPhone’da Ayarlar › Apple Hesabı › Abonelikler bölümünden yönetebilir veya iptal edebilirsiniz; iptal, mevcut dönemin sonunda geçerli olur ve kalan süre için kısmi iade yapılmaz. Ömür boyu satın alma tek seferliktir ve yenilenmez.
+- Premium, satın almayı yaptığınız Ödev Odak hesabına bağlanır ve bu hesapla giriş yaptığınız cihazlarda kullanılabilir. Premium başka bir hesaba devredilemez; hesabınızı silerseniz Premium da sona erer. Hesabı silmek aktif aboneliği iptal etmez; aboneliği Apple üzerinden ayrıca iptal etmeniz gerekir.
 - Satın almanızı Premium ekranındaki “Satın alımları geri yükle” seçeneğiyle yeniden etkinleştirebilirsiniz. Satın alma yalnızca bir Ödev Odak hesabına bağlanabilir.
 - İade talepleri Apple’ın kendi koşullarına göre Apple tarafından değerlendirilir (reportaproblem.apple.com). İade edilen satın almada Premium kapatılır.
 - Premium kapsamındaki özellikler zaman içinde geliştirilebilir veya değiştirilebilir. Kanunen tanınan tüketici hakları saklıdır.
