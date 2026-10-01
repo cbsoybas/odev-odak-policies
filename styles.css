@@ -80,6 +80,19 @@ footer.site .copy { margin-right: auto; }
 footer.site a { color: var(--muted); text-decoration: none; }
 footer.site a:hover { color: var(--paper); }
 
+/* Veliler sayfası */
+.doc .lede { font-size: 1.2rem; line-height: 1.6; color: var(--muted); margin-bottom: 8px; }
+.doc ol.steps { list-style: none; padding: 0; counter-reset: step; display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+.doc ol.steps li { counter-increment: step; position: relative; padding: 16px 18px 16px 64px; background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: 16px; margin: 0; }
+.doc ol.steps li::before { content: counter(step); position: absolute; left: 16px; top: 14px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--ink-3); display: grid; place-items: center; font: 800 1rem/1 var(--display); color: var(--gold); }
+.compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+.compare section { min-width: 0; border-radius: 18px; padding: 20px 22px; border: 1px solid var(--ink-3); background: var(--ink-2); }
+.compare section.no { background: transparent; }
+.compare h3 { margin-top: 0; font-size: 1.02rem; }
+.compare .yes li::marker { color: #34D399; }
+.compare .no li::marker { content: "× "; color: #FCA5A5; }
+@media (max-width: 640px) { .compare { grid-template-columns: minmax(0, 1fr); } }
+
 @media (max-width: 960px) {
   .page { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 32px 64px; }
   .toc { position: static; max-height: none; background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: 16px; padding: 16px 18px; }
