@@ -1,7 +1,7 @@
 # Ödev Odak Kullanım Koşulları
 
 **Yürürlük tarihi:** 15.09.2026  
-**Son güncelleme:** 29.09.2026  
+**Son güncelleme:** 01.10.2026  
 **Hizmet sağlayıcısı / yayıncı:** Ödev Odak geliştiricisi (GitHub: cbsoybas)  
 **İletişim:** [destek@odevodak.com](destek@odevodak.com)
 Bu Kullanım Koşulları, Ödev Odak iPhone ve iPad uygulamasına, uygulamanın sunucularına ve uygulama üzerinden sunulan ödev takibi, Google Classroom bağlantısı, bulut yedeği, ebeveyn bağlantısı, odak modu ve fotoğraf kontrolü özelliklerine (birlikte “Hizmet”) erişiminizi düzenler. Uygulamayı indirerek, açarak veya kullanarak bu koşulları kabul etmiş olursunuz. Kabul etmiyorsanız Hizmeti kullanmayın.
@@ -64,13 +64,19 @@ Ebeveynin gönderdiği düzenleme veya odak komutları öğrenci cihazında eşi
 
 ## 8. Premium satın alma ve reklamlar
 
-- Ödev Odak Premium; aylık ve yıllık otomatik yenilenen abonelikler ile tek seferlik ömür boyu satın alma olarak sunulur. Fiyatlar satın almadan önce App Store’da gösterilir ve ödeme Apple tarafından alınır.
+- Ödev Odak Premium şu seçeneklerle sunulur:
+  - **Premium Aylık**: 1 aylık otomatik yenilenen abonelik, Türkiye’de 49,99 ₺ / ay.
+  - **Premium Yıllık**: 1 yıllık otomatik yenilenen abonelik, Türkiye’de 349,99 ₺ / yıl.
+  - **Premium Ömür Boyu**: tek seferlik satın alma; yenilenmez.
+- Diğer ülkelerde App Store’un yerel fiyatı geçerlidir. Güncel fiyat ve süre, satın almadan önce Premium ekranında ve App Store’da gösterilir. Ücretsiz deneme sunulmaz.
+- Ödeme, satın almayı onayladığınızda Apple hesabınızdan alınır.
 - Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmedikçe aynı süre ve fiyatla otomatik olarak yenilenir; yenileme ücreti dönem bitmeden önceki 24 saat içinde Apple hesabınızdan alınır. Aboneliğinizi iPhone’da Ayarlar › Apple Hesabı › Abonelikler bölümünden yönetebilir veya iptal edebilirsiniz; iptal, mevcut dönemin sonunda geçerli olur ve kalan süre için kısmi iade yapılmaz. Ömür boyu satın alma tek seferliktir ve yenilenmez.
 - Premium, satın almayı yaptığınız Ödev Odak hesabına bağlanır ve bu hesapla giriş yaptığınız cihazlarda kullanılabilir. Premium başka bir hesaba devredilemez; hesabınızı silerseniz Premium da sona erer. Hesabı silmek aktif aboneliği iptal etmez; aboneliği Apple üzerinden ayrıca iptal etmeniz gerekir.
 - Satın almanızı Premium ekranındaki “Satın alımları geri yükle” seçeneğiyle yeniden etkinleştirebilirsiniz. Satın alma yalnızca bir Ödev Odak hesabına bağlanabilir.
 - İade talepleri Apple’ın kendi koşullarına göre Apple tarafından değerlendirilir (reportaproblem.apple.com). İade edilen satın almada Premium kapatılır.
 - Premium kapsamındaki özellikler zaman içinde geliştirilebilir veya değiştirilebilir. Kanunen tanınan tüketici hakları saklıdır.
 - Premium olmayan kullanıcılara Uygulamada Google AdMob aracılığıyla reklam gösterilebilir. Premium etkinken reklam gösterilmez.
+- Bu Koşullar, Apple’ın Standart Lisanslı Uygulama Son Kullanıcı Lisans Sözleşmesi (EULA) ile birlikte uygulanır: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 ## 9. Kabul edilebilir kullanım
 
