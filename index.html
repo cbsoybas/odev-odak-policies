@@ -21,336 +21,421 @@
 <meta name="theme-color" content="#15122E">
 <link rel="icon" type="image/png" href="/logo.png">
 <link rel="apple-touch-icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;800;900&family=Figtree:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap">
 <style>
-/* Layout: gece masası. Solda iddia, sağda ödevleri kendi kendine bitiren canlı telefon; altta sırayla nasıl çalışır, özellikler, Premium ve destek. */
-:root {
-  --ink: #15122E;          /* sayfa zemini, Premium mürekkebi */
-  --ink-2: #1E1A44;        /* yüzeyler */
-  --ink-3: #2A2560;        /* çizgiler, telefon kasası */
-  --paper: #F5F3FF;        /* ana metin */
-  --muted: #A9A4D6;        /* ikincil metin */
-  --indigo: #6366F1;       /* uygulamanın indigo vurgusu, koyu zeminde okunur ton */
-  --lavender: #C7D2FE;
-  --gold: #FBBF24;         /* seri alevi ve Premium */
-  --green: #34D399;        /* tamamlandı */
-  --display: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --step-0: clamp(1rem, .96rem + .2vw, 1.0625rem);
-  --step-1: clamp(1.2rem, 1.1rem + .5vw, 1.45rem);
-  --step-2: clamp(1.6rem, 1.3rem + 1.4vw, 2.3rem);
-  --step-3: clamp(2.5rem, 1.7rem + 4vw, 4.6rem);
-  color-scheme: dark;
+/* Layout: kareli defter (dot-grid) zemini; fosforlu kalem vurgusu tek cesur nokta. Hero: dev başlık + dokunulabilir telefon. Ardından adım şeridi, bento özellik ızgarası, Premium kartı, footer. */
+:root{
+  --bg:#15122E; --bg2:#1B1739; --card:#221D47; --card2:#2A2455; --line:#352E6B; --dot:#2A2457;
+  --fg:#F4F1FF; --muted:#A9A2D8; --hl:#FFE066; --hl-ink:#1E1800; --lav:#B9A8FF; --ok:#7BE0A8; --lock:#FF8A80;
+  --frame:#0B0920; --glow:rgba(185,168,255,.18);
+  --display:'Gabarito','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --body:'Figtree','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --hand:'Caveat','Bradley Hand','Comic Sans MS',cursive;
+  color-scheme:dark;
 }
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body {
-  margin: 0; background: var(--ink); color: var(--paper);
-  font: 400 var(--step-0)/1.6 var(--body);
-  padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px);
-  overflow-x: hidden;
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#F7F5FF; --bg2:#EFEBFF; --card:#FFFFFF; --card2:#F3F0FF; --line:#DDD6F6; --dot:#D9D2F2;
+  --fg:#17133A; --muted:#5D5791; --hl:#FFD84D; --hl-ink:#1E1800; --lav:#5B44D0; --ok:#12804F; --lock:#D2453A;
+  --frame:#17133A; --glow:rgba(91,68,208,.12); color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#F7F5FF; --bg2:#EFEBFF; --card:#FFFFFF; --card2:#F3F0FF; --line:#DDD6F6; --dot:#D9D2F2;
+  --fg:#17133A; --muted:#5D5791; --hl:#FFD84D; --hl-ink:#1E1800; --lav:#5B44D0; --ok:#12804F; --lock:#D2453A;
+  --frame:#17133A; --glow:rgba(91,68,208,.12); color-scheme:light}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%}
+img{max-width:100%}
+body{margin:0;padding-inline:1rem;padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px);background-color:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:26px 26px;color:var(--fg);font:400 1.02rem/1.6 var(--body);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--hl);outline-offset:3px;border-radius:8px}
+.wrap{max-width:72rem;margin-inline:auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.02}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font:600 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--lav)}
+.eyebrow svg{width:1rem;height:1rem}
+
+/* NAV */
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + .75rem);z-index:10;margin-top:.75rem}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;background:color-mix(in srgb,var(--card) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:.5rem .6rem .5rem .9rem}
+.logo{display:flex;align-items:center;gap:.6rem;font:800 1.12rem var(--display);text-decoration:none;letter-spacing:-.01em}
+.logo img{width:1.9rem;height:1.9rem;border-radius:.55rem;display:block}
+.links{display:flex;gap:.25rem;flex-wrap:wrap;font-size:.92rem;font-weight:500}
+.links a{text-decoration:none;color:var(--muted);padding:.45rem .8rem;border-radius:999px;transition:background .2s,color .2s}
+.links a:hover{color:var(--fg);background:var(--card2)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding-block:5rem 5.5rem;position:relative}
+.hero>*{min-width:0}
+.hero h1{font-size:clamp(3rem,8.4vw,6.4rem);font-weight:900;letter-spacing:-.035em;margin-block:1.2rem 1.6rem}
+.hero h1 .l2{display:block}
+.mark{position:relative;display:inline;color:var(--hl-ink);padding-inline:.12em;margin-inline:-.06em;
+  background:linear-gradient(100deg,transparent .4%,var(--hl) 1.2%,var(--hl) 98%,transparent 99.6%) no-repeat 0 62%/100% 74%;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:.12em .3em .18em .35em;animation:swipe 1s .35s cubic-bezier(.65,0,.25,1) both}
+@keyframes swipe{from{background-size:0% 74%;color:var(--fg)}60%{color:var(--fg)}to{background-size:100% 74%;color:var(--hl-ink)}}
+.lead{font-size:1.2rem;max-width:33rem;color:var(--muted);margin:0}
+.lead b{color:var(--fg);font-weight:700}
+.cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-block:2rem 1.25rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.5rem;border-radius:1rem;font-weight:700;text-decoration:none;border:1.5px solid var(--line);transition:transform .2s,box-shadow .2s,background .2s}
+.btn svg{width:1.2rem;height:1.2rem}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg);box-shadow:0 .35rem 0 var(--hl)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 .55rem 0 var(--hl)}
+.btn.ghost:hover{background:var(--card)}
+.small{font-size:.92rem;color:var(--muted);max-width:30rem;margin:0}
+
+/* PHONE — gerçek uygulamanın arayüzü: açık iOS zemini, beyaz kartlar, indigo→mor degrade hedef kartı, yüzen sekme çubuğu */
+.stage{position:relative;justify-self:center;width:100%;max-width:21.5rem}
+.stage::before{content:"";position:absolute;inset:6% -4% -2%;background:radial-gradient(closest-side,var(--glow),transparent);z-index:-1}
+.phone{width:100%;background:#0B0920;border-radius:3.1rem;padding:.55rem;box-shadow:0 40px 80px -30px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.1);transform:rotate(2deg);transition:transform .5s}
+.phone:hover{transform:rotate(0)}
+.screen{--a-bg:#F6F7FB;--a-card:#FFFFFF;--a-ink:#141A33;--a-mut:#7A8099;--a-line:#E8EAF2;--a-ind:#4F46E5;--a-vio:#7C3AED;--a-ok:#16A34A;--a-chip:#EEF0F7;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Figtree",system-ui,sans-serif;color:var(--a-ink);
+  background:var(--a-bg);border-radius:2.6rem;padding:.7rem 1rem 5.2rem;position:relative;overflow:hidden;display:grid;gap:.8rem;align-content:start;min-height:40rem;color-scheme:light}
+.sbar{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:.86rem;padding:.15rem .7rem 0;height:1.9rem}
+.sbar .isl{width:5.6rem;height:1.55rem;border-radius:999px;background:#0B0920}
+.sbar .ic{display:flex;gap:.3rem;align-items:center}
+.sbar .ic svg{height:.72rem;width:auto;fill:var(--a-ink)}
+.brand{display:flex;align-items:center;gap:.5rem;font-size:.66rem;font-weight:600;letter-spacing:.16em;margin-top:.3rem}
+.brand img{width:1.5rem;height:1.5rem;border-radius:.42rem;display:block}
+.ahead{display:flex;justify-content:space-between;align-items:flex-end;gap:.5rem}
+.ahead h3{font-size:1.6rem;line-height:1.1;font-weight:700;font-family:inherit;letter-spacing:-.02em}
+.ahead small{display:block;font-size:.72rem;color:var(--a-mut);margin-top:.25rem;font-weight:400}
+.streak{display:inline-flex;align-items:center;gap:.3rem;font-size:.76rem;font-weight:700;font-family:inherit;color:#B45309;background:#FFF4E0;padding:.32rem .6rem .32rem .45rem;border-radius:999px;white-space:nowrap}
+.streak svg{width:.9rem;height:.9rem;color:#F59E0B}
+.streak.bump{animation:bump .5s}
+@keyframes bump{50%{transform:scale(1.18)}}
+.goal{border-radius:1.25rem;padding:.95rem 1rem 1.05rem;color:#fff;background:linear-gradient(135deg,var(--a-ind),var(--a-vio));box-shadow:0 12px 24px -12px rgba(79,70,229,.7);display:grid;gap:.75rem;position:relative;overflow:hidden}
+.goal::after{content:"";position:absolute;width:9rem;height:9rem;right:-3rem;bottom:-4rem;border-radius:50%;background:rgba(255,255,255,.08)}
+.goal .top{display:flex;justify-content:space-between;align-items:center;font-size:.58rem;font-weight:700;letter-spacing:.14em}
+.pill{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:600;letter-spacing:0;background:rgba(255,255,255,.18);padding:.25rem .55rem;border-radius:999px}
+.pill::before{content:"";width:.42rem;height:.42rem;border-radius:50%;background:#86EFAC;box-shadow:0 0 0 0 rgba(134,239,172,.7);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 .4rem transparent}100%{box-shadow:0 0 0 0 transparent}}
+.goal .mid{display:flex;align-items:center;gap:.9rem;position:relative;z-index:1}
+.ring{flex:none;width:4.1rem;height:4.1rem;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}
+.ring .bg{stroke:rgba(255,255,255,.25)}
+.ring .fg{stroke:#fff;stroke-linecap:round;stroke-dasharray:163.4;stroke-dashoffset:163.4;transition:stroke-dashoffset .6s cubic-bezier(.4,0,.2,1)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:.95rem;font-weight:700}
+.goal .msg strong{display:block;font-size:.98rem;line-height:1.25;font-weight:700}
+.goal .msg strong+span{display:block;font-size:.66rem;opacity:.85;margin-top:.3rem;line-height:1.35}
+.goal .apps{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;font-size:.6rem;opacity:.95;position:relative;z-index:1}
+.goal .apps em{font-style:normal;display:inline-flex;align-items:center;gap:.25rem;background:rgba(255,255,255,.16);padding:.18rem .5rem;border-radius:999px;font-weight:600;transition:background .4s}
+.goal .apps em svg{width:.62rem;height:.62rem}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.acts span{display:flex;justify-content:center;align-items:center;gap:.35rem;font-size:.74rem;font-weight:600;padding:.62rem .4rem;border-radius:.85rem}
+.acts span svg{width:.85rem;height:.85rem}
+.acts .p{background:linear-gradient(135deg,var(--a-ind),var(--a-vio));color:#fff}
+.acts .o{background:var(--a-card);color:var(--a-ind);border:1px solid var(--a-line)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--a-chip);border-radius:.8rem;padding:.2rem;font-size:.72rem;font-weight:600;color:var(--a-mut);text-align:center}
+.seg span{padding:.4rem}
+.seg .on{background:var(--a-card);color:var(--a-ind);border-radius:.62rem;box-shadow:0 1px 3px rgba(20,26,51,.1)}
+.list-h{font-size:.7rem;font-weight:600;color:var(--a-mut);margin:.1rem .2rem -.2rem}
+.hw{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.hw button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;gap:.65rem;align-items:center;padding:.65rem .7rem;background:var(--a-card);border-radius:1rem;box-shadow:0 1px 2px rgba(20,26,51,.06);transition:opacity .3s}
+.hw button:focus-visible{outline:2.5px solid var(--a-ind);outline-offset:2px}
+.tick{flex:none;width:1.3rem;height:1.3rem;border-radius:50%;border:2px solid #C7CBE0;display:grid;place-items:center;transition:background .25s,border-color .25s}
+.tick svg{width:.72rem;height:.72rem;stroke:#fff;opacity:0;transform:scale(.4);transition:.25s}
+.hw .t{min-width:0;flex:1;display:grid;line-height:1.3}
+.hw strong{font-size:.78rem;font-weight:600;transition:color .25s}
+.hw .sub{font-size:.66rem;color:var(--a-mut)}
+.hw small{display:inline-flex;align-items:center;gap:.2rem;font-size:.58rem;font-weight:600;color:var(--a-ind);background:#EEF0FF;padding:.2rem .45rem;border-radius:999px;white-space:nowrap}
+.hw small svg{width:.7rem;height:.7rem}
+.hw button[aria-pressed="true"] .tick{background:var(--a-ok);border-color:var(--a-ok)}
+.hw button[aria-pressed="true"] .tick svg{opacity:1;transform:none}
+.hw button[aria-pressed="true"] strong{color:var(--a-mut);text-decoration:line-through}
+.hw button[aria-pressed="true"]{opacity:.75}
+.hw li:first-child .tick{animation:hint 2.2s 1.6s 3}
+@keyframes hint{0%,100%{box-shadow:0 0 0 0 rgba(79,70,229,.35)}50%{box-shadow:0 0 0 .4rem rgba(79,70,229,0)}}
+.tabbar{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);display:flex;gap:.2rem;padding:.25rem;background:rgba(255,255,255,.92);border-radius:999px;box-shadow:0 6px 18px -6px rgba(20,26,51,.25)}
+.tabbar span{display:grid;justify-items:center;gap:.1rem;font-size:.55rem;font-weight:600;padding:.4rem .95rem;border-radius:999px;color:var(--a-ink)}
+.tabbar span svg{width:1rem;height:1rem}
+.tabbar .on{background:var(--a-chip)}
+.screen.done .pill::before{background:rgba(255,255,255,.6);animation:none}
+.screen.done .goal .apps em{background:rgba(134,239,172,.28)}
+.screen .when-done{display:none}
+.screen.done .when-done{display:block}
+.screen.done .when-todo{display:none}
+
+/* SECTIONS */
+section{padding-block:5.5rem}
+.head{display:grid;gap:1rem;max-width:44rem;margin-bottom:3rem}
+.head h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-.03em}
+.head p{margin:0;color:var(--muted);font-size:1.15rem;max-width:36rem}
+.u{background:linear-gradient(var(--hl),var(--hl)) no-repeat 0 92%/100% .14em;padding-bottom:.04em}
+
+/* STEPS */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;counter-reset:s;position:relative}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:1.6rem;padding:1.8rem 1.7rem 2rem;display:grid;gap:.7rem;align-content:start;min-width:0;position:relative}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:1rem;background:var(--hl);color:var(--hl-ink);font:900 1.7rem var(--display);margin-bottom:.6rem;transform:rotate(-4deg)}
+.steps li:nth-child(2)::before{transform:rotate(3deg)}
+.steps li:not(:last-child)::after{content:"";position:absolute;top:3.4rem;right:-1.25rem;width:1.25rem;border-top:2px dashed var(--line)}
+.steps h3{font-size:1.4rem;font-weight:800;letter-spacing:-.01em}
+.steps p{margin:0;color:var(--muted)}
+
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.f{background:var(--card);border:1px solid var(--line);border-radius:1.6rem;padding:1.7rem;display:grid;gap:.6rem;align-content:start;min-width:0;transition:transform .3s,border-color .3s}
+.f:hover{transform:translateY(-3px);border-color:var(--lav)}
+.f .ic{width:2.8rem;height:2.8rem;border-radius:.9rem;background:var(--card2);display:grid;place-items:center;color:var(--lav);margin-bottom:.5rem}
+.f .ic svg{width:1.4rem;height:1.4rem}
+.f h3{font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
+.f p{margin:0;color:var(--muted)}
+.f.wide{grid-column:span 2;grid-template-columns:1fr auto;align-items:center;gap:1.5rem}
+.f.wide>div{display:grid;gap:.6rem;min-width:0}
+.mini-apps{display:flex;gap:.7rem}
+.mini-apps span{width:3.6rem;height:3.6rem;border-radius:1.1rem;display:grid;place-items:center;position:relative;filter:grayscale(.85) brightness(.75)}
+.mini-apps span svg{width:1.6rem;height:1.6rem;color:#fff}
+.mini-apps span:nth-child(1){background:linear-gradient(135deg,#FF7A59,#E8467C);transform:rotate(-6deg)}
+.mini-apps span:nth-child(2){background:linear-gradient(135deg,#FF5A5F,#C2185B)}
+.mini-apps span:nth-child(3){background:linear-gradient(135deg,#7C6CFF,#3FA9F5);transform:rotate(6deg)}
+.mini-apps span::after{content:"";position:absolute;right:-.3rem;bottom:-.3rem;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--lock) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E") center/62% no-repeat;border:2.5px solid var(--card)}
+.week{display:flex;gap:.35rem;margin-top:.6rem}
+.week i{width:1.5rem;height:1.5rem;border-radius:.45rem;background:var(--hl)}
+.week i:last-child{background:transparent;border:2px dashed var(--line)}
+.f.parents{grid-column:1/-1;grid-template-columns:auto 1fr auto;align-items:center;gap:1.5rem;background:linear-gradient(120deg,var(--card),var(--card2))}
+.f.parents .ic{margin:0}
+.f.parents>div{display:grid;gap:.4rem;min-width:0}
+.f.parents a.btn{white-space:nowrap}
+
+/* PREMIUM */
+.premium{position:relative;background:var(--card);border:1px solid var(--line);border-radius:2.2rem;padding:clamp(1.6rem,4vw,3.5rem);display:grid;grid-template-columns:1fr 1fr;gap:3rem;overflow:hidden}
+.premium::before{content:"";position:absolute;width:30rem;height:30rem;right:-10rem;top:-12rem;border-radius:50%;background:radial-gradient(closest-side,var(--glow),transparent);pointer-events:none}
+.premium>*{min-width:0;position:relative}
+.premium h2{font-size:clamp(2.2rem,5.4vw,3.8rem);font-weight:900;letter-spacing:-.035em;margin-block:1rem}
+.premium .tag{font:800 clamp(1.25rem,2.6vw,1.6rem)/1.2 var(--display);margin:0 0 1.4rem}
+.premium p{color:var(--muted);margin:0 0 1rem}
+.pbox h3{font:600 .78rem var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.plist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.plist li{display:flex;gap:.7rem;align-items:flex-start;background:var(--card2);border-radius:1rem;padding:.85rem .9rem;font-weight:600;font-size:.95rem;line-height:1.35}
+.plist li svg{flex:none;width:1.15rem;height:1.15rem;color:var(--hl-ink);background:var(--hl);border-radius:50%;padding:.2rem;margin-top:.05rem}
+
+
+/* DİĞER UYGULAMALAR */
+.others{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.oapp{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:1.6rem;padding:1.5rem;transition:transform .3s,border-color .3s;min-width:0}
+.oapp:hover{transform:translateY(-3px);border-color:var(--lav)}
+.oapp img{width:4rem;height:4rem;border-radius:1rem;display:block;box-shadow:0 8px 18px -10px rgba(0,0,0,.5)}
+.oapp div{display:grid;gap:.35rem;min-width:0}
+.oapp h3{font-size:1.3rem;font-weight:800}
+.oapp p{margin:0;color:var(--muted);font-size:.95rem}
+.oapp .go{display:inline-flex;align-items:center;gap:.3rem;font-weight:600;color:var(--lav);font-size:.92rem;margin-top:.3rem}
+.oapp .go svg{width:.9rem;height:.9rem;transition:transform .25s}
+.oapp:hover .go svg{transform:translate(2px,-2px)}
+.oapp.all{background:linear-gradient(135deg,var(--card),var(--card2));grid-template-columns:1fr;align-content:space-between}
+.oapp.all .stack{display:flex}
+.oapp.all .stack img{width:3rem;height:3rem;border-radius:.8rem;border:3px solid var(--card)}
+.oapp.all .stack img+img{margin-left:-.8rem}
+@media (max-width:920px){.others{grid-template-columns:1fr 1fr}.oapp.all{grid-column:1/-1}}
+@media (max-width:600px){.others{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{padding-block:4rem 3rem}
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.fgrid a{display:grid;gap:.4rem;text-decoration:none;padding:1.3rem;border-radius:1.2rem;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 60%,transparent);transition:border-color .25s,background .25s;height:100%}
+.fgrid a:hover{border-color:var(--hl);background:var(--card)}
+.fgrid strong{font:800 1.05rem var(--display);display:flex;justify-content:space-between;align-items:center}
+.fgrid strong svg{width:1rem;height:1rem;color:var(--muted);transition:transform .25s}
+.fgrid a:hover strong svg{transform:translate(2px,-2px);color:var(--hl)}
+.fgrid span{color:var(--muted);font-size:.9rem;line-height:1.45}
+.fh{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:900;letter-spacing:-.02em;margin-bottom:1.5rem}
+.copy{margin-top:2.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+.copy b{font:800 1rem var(--display);color:var(--fg)}
+
+@media (max-width:920px){
+  .hero{grid-template-columns:1fr;gap:3.5rem;padding-block:3.5rem 4rem}
+  .premium{grid-template-columns:1fr;gap:2rem}
+  .steps{grid-template-columns:1fr}
+  .steps li:not(:last-child)::after{display:none}
+  .bento{grid-template-columns:1fr 1fr}
+  .f.wide{grid-column:1/-1}
+  .fgrid{grid-template-columns:1fr 1fr}
 }
-a { color: inherit; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 10px; }
-img { max-width: 100%; }
-.wrap { width: min(1120px, 100%); margin-inline: auto; padding-inline: 20px; }
-h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -.01em; }
-p { margin: 0; }
-
-/* Lamba ışığı: sayfanın tepesinde sabit, yumuşak bir sıcak ışık */
-.glow { position: absolute; inset: 0 0 auto 0; height: 900px; pointer-events: none; z-index: 0;
-  background:
-    radial-gradient(520px 380px at 78% 18%, rgba(251,191,36,.13), transparent 70%),
-    radial-gradient(700px 520px at 70% 30%, rgba(99,102,241,.22), transparent 70%); }
-
-/* Üst menü */
-header { position: relative; z-index: 2; }
-.nav { display: flex; align-items: center; gap: 22px; padding-block: 22px; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 1.15rem; margin-right: auto; }
-.brand img { width: 34px; height: 34px; border-radius: 9px; }
-.nav a:not(.brand) { text-decoration: none; color: var(--muted); font-size: .95rem; }
-.nav a:not(.brand):hover { color: var(--paper); }
-
-/* Giriş */
-.hero { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; padding-block: 36px 90px; }
-.hero > * { min-width: 0; }
-.eyebrow { font: 600 .8rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 8px; }
-.eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
-.hero h1 { font-size: var(--step-3); line-height: 1.02; font-weight: 800; margin-top: 18px; }
-.hero h1 span { color: var(--gold); }
-.lede { margin-top: 22px; max-width: 34ch; font-size: var(--step-1); line-height: 1.5; color: var(--muted); }
-.lede b { color: var(--paper); font-weight: 600; }
-.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.store { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border-radius: 14px; background: var(--paper); color: var(--ink); text-decoration: none; font-weight: 700; transition: transform .2s ease; }
-.store:hover { transform: translateY(-2px); }
-.store svg { width: 22px; height: 22px; }
-.ghost { display: inline-flex; align-items: center; padding: 13px 18px; border-radius: 14px; border: 1px solid var(--ink-3); text-decoration: none; color: var(--paper); }
-.ghost:hover { border-color: var(--indigo); }
-.fine { margin-top: 16px; font-size: .85rem; color: var(--muted); }
-
-/* Canlı telefon */
-.stage { position: relative; display: grid; place-items: center; min-height: 600px; }
-.orbit { position: absolute; border-radius: 50%; border: 1px dashed rgba(199,210,254,.18); }
-.orbit.o1 { width: 470px; height: 470px; animation: spin 60s linear infinite; }
-.orbit.o2 { width: 600px; height: 600px; animation: spin 90s linear infinite reverse; border-style: dotted; }
-.orbit i { position: absolute; top: -7px; left: 50%; width: 14px; height: 14px; border-radius: 50%; background: var(--indigo); box-shadow: 0 0 18px var(--indigo); }
-.orbit.o2 i { background: var(--gold); box-shadow: 0 0 18px var(--gold); top: auto; bottom: 18%; left: 4%; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.phone { position: relative; width: 300px; max-width: 100%; aspect-ratio: 300 / 610; border-radius: 46px; padding: 12px;
-  background: linear-gradient(160deg, #3A3480, var(--ink-3) 40%, #120F29); box-shadow: 0 40px 80px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.08); }
-.screen { position: relative; height: 100%; border-radius: 36px; overflow: hidden; background: #F8FAFC; color: #0F172A; padding: 46px 16px 16px; display: flex; flex-direction: column; gap: 12px; }
-.island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 92px; height: 26px; border-radius: 20px; background: #000; }
-.bar { display: flex; justify-content: space-between; align-items: center; }
-.bar h3 { font-size: 1.35rem; font-weight: 800; }
-.flame { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 999px; background: #FFF7E6; color: #B45309; font: 700 .85rem/1 var(--display); }
-.flame svg { width: 15px; height: 15px; transform-origin: 50% 90%; animation: flicker 1.4s ease-in-out infinite; }
-.flame.bump { animation: bump .6s ease; }
-@keyframes flicker { 0%,100% { transform: scale(1) rotate(-2deg); } 50% { transform: scale(1.12) rotate(3deg); } }
-@keyframes bump { 40% { transform: scale(1.25); } }
-
-.lock { border-radius: 20px; padding: 14px; background: #4F46E5; color: #fff; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: center; transition: background .5s ease; }
-.lock .ic { grid-row: span 2; width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.18); display: grid; place-items: center; }
-.lock .ic svg { width: 20px; height: 20px; }
-.lock .shackle { transition: transform .45s cubic-bezier(.3,1.6,.5,1); transform-origin: 16px 10px; }
-.lock b { font: 700 .95rem/1.2 var(--display); }
-.lock small { font-size: .74rem; opacity: .85; line-height: 1.3; }
-.lock.open { background: #059669; }
-.lock.open .shackle { transform: translateY(-3px) rotate(-28deg); }
-.apps { display: flex; gap: 6px; }
-.apps span { flex: 1; height: 30px; border-radius: 9px; background: #E2E8F0; display: grid; place-items: center; font-size: .62rem; font-weight: 700; color: #64748B; transition: background .4s ease, color .4s ease, filter .4s ease; filter: grayscale(1); }
-.lock.open ~ .apps span { background: #EEF2FF; color: #4F46E5; filter: none; }
-
-.label { font: 600 .68rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #64748B; }
-.tasks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.task { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 14px; background: #fff; box-shadow: 0 1px 0 #E8EBF2, 0 4px 14px rgba(15,23,42,.05); transition: opacity .4s ease; }
-.task .box { width: 22px; height: 22px; border-radius: 7px; border: 2px solid #CBD5E1; display: grid; place-items: center; transition: background .25s ease, border-color .25s ease; }
-.task .box svg { width: 14px; height: 14px; stroke: #fff; stroke-width: 3; fill: none; stroke-dasharray: 20; stroke-dashoffset: 20; transition: stroke-dashoffset .35s ease .1s; }
-.task div { min-width: 0; }
-.task strong { display: block; font-size: .82rem; line-height: 1.25; }
-.task em { font-style: normal; font-size: .68rem; color: #64748B; }
-.task time { font: 600 .68rem/1 var(--mono); color: #64748B; }
-.task.done { opacity: .6; }
-.task.done strong { text-decoration: line-through; text-decoration-color: #94A3B8; }
-.task.done .box { background: #4F46E5; border-color: #4F46E5; }
-.task.done .box svg { stroke-dashoffset: 0; }
-.task .cam { font-size: .6rem; font-weight: 700; color: #059669; background: #ECFDF5; padding: 3px 6px; border-radius: 6px; opacity: 0; transition: opacity .3s ease; }
-.task.done .cam { opacity: 1; }
-.progress { margin-top: auto; height: 8px; border-radius: 99px; background: #E2E8F0; overflow: hidden; }
-.progress i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #4F46E5, #818CF8); border-radius: inherit; transition: width .5s ease; }
-
-/* Bölümler */
-section { position: relative; z-index: 1; }
-.block { padding-block: 70px; border-top: 1px solid rgba(199,210,254,.1); }
-.block h2 { font-size: var(--step-2); font-weight: 800; }
-.block .intro { margin-top: 12px; max-width: 58ch; color: var(--muted); }
-
-.steps { list-style: none; padding: 0; margin: 40px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: step; }
-.steps li { min-width: 0; counter-increment: step; }
-.steps li::before { content: counter(step); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--ink-3); font: 800 1.1rem/1 var(--display); color: var(--gold); margin-bottom: 16px; }
-.steps h3 { font-size: 1.15rem; }
-.steps p { margin-top: 8px; color: var(--muted); }
-
-.features { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(199,210,254,.1); border-radius: 22px; overflow: hidden; }
-.feature { background: var(--ink); padding: 26px; min-width: 0; transition: background .25s ease; }
-.feature:hover { background: var(--ink-2); }
-.feature svg { width: 26px; height: 26px; stroke: var(--lavender); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .3s ease, stroke .3s ease; }
-.feature:hover svg { transform: translateY(-3px); stroke: var(--gold); }
-.feature h3 { margin-top: 14px; font-size: 1.08rem; }
-.feature p { margin-top: 6px; color: var(--muted); font-size: .95rem; }
-
-/* Premium */
-.premium { margin-top: 10px; border-radius: 28px; padding: clamp(24px, 4vw, 48px); background: linear-gradient(135deg, #2A2266, var(--ink-2) 60%); border: 1px solid rgba(251,191,36,.25); display: grid; grid-template-columns: .9fr 1.1fr; gap: 36px; align-items: start; }
-.premium > * { min-width: 0; }
-.premium h2 { font-size: var(--step-2); }
-.premium h2 span { color: var(--gold); }
-.premium .intro { color: var(--muted); margin-top: 12px; }
-.chips { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-.chips li { padding: 12px 14px; border-radius: 14px; background: rgba(21,18,46,.55); border: 1px solid rgba(199,210,254,.12); font-size: .95rem; display: flex; gap: 10px; align-items: center; min-width: 0; }
-.chips li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
-.plans { margin-top: 18px; color: var(--muted); font-size: .92rem; }
-
-/* Destek ve politikalar */
-.links { margin-top: 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.links a { min-width: 0; text-decoration: none; padding: 20px; border-radius: 18px; border: 1px solid var(--ink-3); transition: border-color .2s ease, transform .2s ease; }
-.links a:hover { border-color: var(--indigo); transform: translateY(-2px); }
-.links h3 { font-size: 1rem; }
-.links p { margin-top: 6px; color: var(--muted); font-size: .9rem; }
-
-footer { position: relative; z-index: 1; padding-block: 34px 44px; color: var(--muted); font-size: .9rem; border-top: 1px solid rgba(199,210,254,.1); }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
-
-@media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; padding-block: 16px 60px; }
-  .stage { min-height: 560px; }
-  .premium { grid-template-columns: 1fr; }
-  .links { grid-template-columns: repeat(2, 1fr); }
-  .features { grid-template-columns: repeat(2, 1fr); }
+@media (max-width:600px){
+  nav .wrap{border-radius:1.4rem;justify-content:center}
+  .links{justify-content:center}
+  .links a{padding:.35rem .55rem}
+  .bento,.fgrid,.plist{grid-template-columns:1fr}
+  .f.wide{grid-template-columns:1fr}
+  .f.parents{grid-template-columns:1fr}
+  section{padding-block:4rem}
+  .note{display:none}
 }
-@media (max-width: 640px) {
-  .nav { gap: 14px; }
-  .nav .brand { width: 100%; }
-  .steps, .features, .chips, .links { grid-template-columns: 1fr; }
-  .orbit.o2 { display: none; }
-  .orbit.o1 { width: 360px; height: 360px; }
-  .stage { min-height: 540px; }
-  .phone { width: 270px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Ödev Odak", "operatingSystem": "iOS, iPadOS", "applicationCategory": "EducationalApplication", "inLanguage": "tr", "url": "https://www.odevodak.com/", "downloadUrl": "https://apps.apple.com/tr/app/id6811425764", "image": "https://www.odevodak.com/logo.png", "description": "Ödevlerini takip eden ve ödevler bitene kadar dikkat dağıtan uygulamaları sınırlayan iPhone ve iPad uygulaması.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"}}</script>
 </head>
 <body>
-<div class="glow" aria-hidden="true"></div>
-<header>
-  <nav class="nav wrap" aria-label="Ana menü">
-    <a class="brand" href="/"><img src="/logo.png" alt="" width="34" height="34">Ödev Odak</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-game" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r=".6" fill="currentColor"/><circle cx="17.5" cy="13.5" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5.5h16v10H10l-4.5 3.5v-3.5H4z"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c.6 3.2 5.5 5.6 5.5 11a5.5 5.5 0 0 1-11 0c0-2.6 1.4-4.2 2.6-5.2.2 1.7 1 2.8 2.2 3.2-.5-3.1-.3-6.2.7-9z"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3.5 8h4l1.5-2.5h6L16.5 8h4v11h-17z"/><circle cx="12" cy="13.2" r="3.4"/></symbol>
+  <symbol id="i-class" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="13" rx="2"/><circle cx="12" cy="10" r="2.2"/><path d="M8.5 15.5c.8-1.6 2-2.3 3.5-2.3s2.7.7 3.5 2.3M8 21h8"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="7" r="3"/><circle cx="17" cy="9.5" r="2.3"/><path d="M2.5 20c.5-3.8 2.7-6 5.5-6s5 2.2 5.5 6M13.5 20c.4-2.8 1.7-4.5 3.5-4.5s3.1 1.7 3.5 4.5"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 19a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.5A3.8 3.8 0 0 1 17.5 19z"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8C7 7.2 5.5 8.1 4.7 9.6c-1.7 2.9-.4 7.3 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.9-1.1-2.9-4zM14.1 5.6c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></symbol>
+</svg>
+
+<nav><div class="wrap">
+  <a class="logo" href="/"><img src="/logo.png" alt="" width="30" height="30">Ödev Odak</a>
+  <div class="links">
     <a href="#nasil">Nasıl çalışır</a>
     <a href="/veliler/">Veliler</a>
     <a href="#premium">Premium</a>
     <a href="/support/">Destek</a>
     <a href="/privacy/">Gizlilik</a>
-  </nav>
-</header>
+  </div>
+</div></nav>
 
-<main>
-  <section class="hero wrap">
-    <div>
-      <span class="eyebrow">iPhone ve iPad için</span>
-      <h1>Önce ödev.<br><span>Sonra her şey.</span></h1>
-      <p class="lede">Ödevlerini ekle, dikkatini dağıtan uygulamaları seç. <b>Ödevlerin bitene kadar onlar bekler,</b> bitince kendiliğinden açılır.</p>
-      <div class="cta">
-        <a class="store" href="https://apps.apple.com/tr/app/id6811425764">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.7 1.3-2.7s-2.4-1-2.4-4ZM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4Z"/></svg>
-          App Store’dan indir
-        </a>
-        <a class="ghost" href="#nasil">Nasıl çalışır?</a>
-      </div>
-      <p class="fine">Ücretsiz. İstersen Premium ile istatistikler, sınav sayacı, temalar ve reklamsız kullanım.</p>
+<main class="wrap">
+<div class="hero">
+  <div>
+    <div class="eyebrow"><svg><use href="#i-phone"/></svg>iPhone ve iPad için</div>
+    <h1>Önce ödev. <span class="l2"><span class="mark">Sonra her şey.</span></span></h1>
+    <p class="lead">Ödevlerini ekle, dikkatini dağıtan uygulamaları seç. <b>Ödevlerin bitene kadar onlar bekler,</b> bitince kendiliğinden açılır.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://apps.apple.com/tr/app/id6811425764"><svg><use href="#i-apple"/></svg>App Store’dan indir</a>
+      <a class="btn ghost" href="#nasil">Nasıl çalışır?<svg><use href="#i-down"/></svg></a>
     </div>
+    <p class="small">Ücretsiz. İstersen Premium ile istatistikler, sınav sayacı, temalar ve reklamsız kullanım.</p>
+  </div>
 
-    <div class="stage" aria-label="Uygulamanın canlı önizlemesi: ödevler işaretlendikçe kilitli uygulamalar açılıyor">
-      <div class="orbit o2" aria-hidden="true"><i></i></div>
-      <div class="orbit o1" aria-hidden="true"><i></i></div>
-      <div class="phone" aria-hidden="true">
-        <div class="screen">
-          <div class="island"></div>
-          <div class="bar">
-            <h3>Bugün</h3>
-            <span class="flame" id="flame"><svg viewBox="0 0 24 24"><path fill="#F59E0B" d="M12 2s5 4.6 5 9.6A5 5 0 0 1 7 11.7c0-2 1-3.5 1-3.5s.4 2.3 2.2 2.3C10.2 6.4 12 2 12 2Z"/><path fill="#FBBF24" d="M12 12s2.5 1.7 2.5 4a2.5 2.5 0 0 1-5 0c0-2.3 2.5-4 2.5-4Z"/></svg><span id="streak">6</span> gün</span>
+  <div class="stage">
+    <div class="phone">
+      <div class="screen" id="screen" aria-label="Durum paneli">
+        <div class="sbar"><span>22:28</span><span class="isl"></span><span class="ic"><svg viewBox="0 0 18 12"><path d="M9 2.2c2.6 0 5 1 6.8 2.7l1.2-1.3A11.4 11.4 0 0 0 9 .4 11.4 11.4 0 0 0 1 3.6l1.2 1.3A9.7 9.7 0 0 1 9 2.2zm0 3.6c1.6 0 3.1.6 4.3 1.7l1.2-1.3A8 8 0 0 0 9 4a8 8 0 0 0-5.5 2.2l1.2 1.3A6.3 6.3 0 0 1 9 5.8zm0 3.6c.7 0 1.3.3 1.8.7L9 12l-1.8-1.9c.5-.4 1.1-.7 1.8-.7z"/></svg><svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="19" height="8" rx="1.8"/><rect x="24" y="4" width="1.6" height="4" rx=".8" opacity=".4"/></svg></span></div>
+        <div class="brand"><img src="/logo.png" alt="" width="24" height="24">ÖDEV ODAK</div>
+        <div class="ahead"><h3>Bugün</h3><span class="streak" id="streak"><svg><use href="#i-flame"/></svg><span id="days">6</span> gün</span></div>
+        <div class="goal">
+          <div class="top"><span>BUGÜNÜN HEDEFİ</span><span class="pill"><span class="when-todo">Odak modu açık</span><span class="when-done">Odak kapalı</span></span></div>
+          <div class="mid">
+            <div class="ring"><svg viewBox="0 0 60 60"><circle class="bg" cx="30" cy="30" r="26"/><circle class="fg" id="ringfg" cx="30" cy="30" r="26"/></svg><b id="pct">%0</b></div>
+            <div class="msg">
+              <div class="when-todo"><strong><span id="left">3</span> ödev kaldı.</strong><span>Bitince uygulamaların açılır.</span></div>
+              <div class="when-done"><strong>Bugün tamam. Zaman senin!</strong><span>Küçük adımlar, büyük rahatlık.</span></div>
+            </div>
           </div>
-          <div class="lock" id="lock">
-            <span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path class="shackle" d="M10 14v-4a6 6 0 0 1 12 0v4"/><rect x="7" y="14" width="18" height="13" rx="3" fill="#fff" stroke="none"/></svg></span>
-            <b id="lockTitle">Odak modu açık</b>
-            <small id="lockText">3 ödev kaldı. Bitince uygulamaların açılır.</small>
-          </div>
-          <div class="apps"><span>Oyunlar</span><span>Video</span><span>Sosyal</span></div>
-          <span class="label">Bugünkü ödevler</span>
-          <ul class="tasks" id="tasks">
-            <li class="task"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><div><strong>Matematik · Türev testi</strong><em>Google Classroom</em></div><span class="cam">Fotoğraflı</span></li>
-            <li class="task"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><div><strong>Kimya · Mol problemleri</strong><em>Sayfa 84–86</em></div><span class="cam">Fotoğraflı</span></li>
-            <li class="task"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><div><strong>Edebiyat · Kompozisyon</strong><em>Yarın teslim</em></div><span class="cam">Fotoğraflı</span></li>
-          </ul>
-          <div class="progress"><i id="bar"></i></div>
+          <div class="apps">Engellenen Uygulamalar: <em><svg><use href="#i-game"/></svg>Oyunlar</em><em><svg><use href="#i-play"/></svg>Video</em><em><svg><use href="#i-chat"/></svg>Sosyal</em></div>
         </div>
+        <div class="acts" aria-hidden="true"><span class="p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Ödev ekle</span><span class="o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.3-4.3L4 9M4 4v5h5M4 13a8 8 0 0 0 14.3 4.3L20 15m0 5v-5h-5"/></svg>Classroom</span></div>
+        <div class="seg" aria-hidden="true"><span class="on">Bugün</span><span>Tümü</span></div>
+        <h4 class="list-h">Bugünkü ödevler</h4>
+        <ul class="hw">
+          <li><button type="button" id="hw1" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><strong>Matematik · Türev testi</strong><span class="sub">Google Classroom</span></span><small><svg><use href="#i-cam"/></svg>Fotoğraflı</small></button></li>
+          <li><button type="button" id="hw2" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><strong>Kimya · Mol problemleri</strong><span class="sub">Sayfa 84–86</span></span><small><svg><use href="#i-cam"/></svg>Fotoğraflı</small></button></li>
+          <li><button type="button" id="hw3" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><strong>Edebiyat · Kompozisyon</strong><span class="sub">Yarın teslim</span></span><small><svg><use href="#i-cam"/></svg>Fotoğraflı</small></button></li>
+        </ul>
+        <div class="tabbar" aria-hidden="true"><span class="on"><svg viewBox="0 0 24 24" fill="#141A33"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>Ödevler</span><span><svg viewBox="0 0 24 24" fill="none" stroke="#141A33" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Ayarlar</span></div>
       </div>
     </div>
-  </section>
-
-  <section class="block wrap" id="nasil">
-    <h2>Üç adımda odak</h2>
-    <p class="intro">Ödev Odak yasakçı değil. Kuralı sen koyarsın, uygulama sadece sözünü tutmana yardım eder.</p>
-    <ol class="steps">
-      <li><h3>Ödevlerini ekle</h3><p>Elle yaz ya da Google Classroom’u bağla, ödevlerin teslim tarihleriyle kendiliğinden gelsin.</p></li>
-      <li><h3>Neyin bekleyeceğini seç</h3><p>Oyunlar, videolar, sosyal medya. Seçtiğin uygulamalar bugünkü ve gecikmiş ödevlerin bitene kadar sınırlanır.</p></li>
-      <li><h3>Bitir, işaretle, rahatla</h3><p>Ödevini tamamlayınca fotoğrafla doğrula. Son ödev bittiğinde uygulamaların açılır, serin bir gün uzar.</p></li>
-    </ol>
-  </section>
-
-  <section class="block wrap">
-    <h2>Ödev takibinin ihtiyacı olan her şey</h2>
-    <div class="features">
-      <div class="feature"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 9h8M8 13h5"/></svg><h3>Google Classroom</h3><p>Sınıflarındaki ödevler otomatik içe aktarılır, teslim ettiklerin tamamlanmış sayılır.</p></div>
-      <div class="feature"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><h3>Odak modu</h3><p>iPhone’un Ekran Süresi altyapısıyla seçtiğin uygulamalar ödevler bitene kadar bekler.</p></div>
-      <div class="feature"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><h3>Fotoğrafla doğrulama</h3><p>Bitirdiğin ödevin fotoğrafını çek, tamamlandığını kanıtla.</p></div>
-      <div class="feature"><svg viewBox="0 0 24 24"><path d="M12 3s5 4.5 5 9.5a5 5 0 0 1-10 0C7 10 8.5 8 8.5 8s.5 2.5 2.5 2.5C11 6.5 12 3 12 3Z"/></svg><h3>Seri takibi</h3><p>Her gün ödevlerini bitirdikçe serin uzar. Alışkanlık küçük adımlarla kurulur.</p></div>
-      <div class="feature"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3 2.2-5 5-5s5 2 5 5M14 20c0-2.4 1.3-4 3-4s3 1.6 3 4"/></svg><h3>Ebeveyn kontrolü</h3><p>İsteğe bağlı. Aile hesabını bağlarsan ödev durumu paylaşılır ve odak desteklenir. <a href="/veliler/">Veliler için</a></p></div>
-      <div class="feature"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.5-8 5.5 5.5 0 0 1 10.6-1.5A4.5 4.5 0 0 1 17 18z"/><path d="M12 11v5M9.5 13.5 12 11l2.5 2.5"/></svg><h3>Bulut yedeği</h3><p>Hesabınla giriş yaptığında ödevlerin yedeklenir, telefon değişse de kaybolmaz.</p></div>
-    </div>
-  </section>
-
-  <section class="block wrap" id="premium">
-    <div class="premium">
-      <div>
-        <span class="eyebrow">Ödev Odak Premium</span>
-        <h2 style="margin-top:14px">Daha düzenli çalış, <span>ilerlemeni gör.</span></h2>
-        <p class="intro">Premium Ödev Odak hesabına bağlanır. Aynı hesapla giriş yaptığın her cihazda açılır.</p>
-        <p class="plans">Aylık, yıllık ya da tek seferlik ömür boyu. Abonelikleri App Store ayarlarından istediğin zaman iptal edebilirsin.</p>
-      </div>
-      <ul class="chips">
-        <li>İstatistikler ve seri takvimi</li>
-        <li>Çalışma planı</li>
-        <li>Odak zamanlayıcısı ve Dinamik Ada</li>
-        <li>Sınav geri sayımı</li>
-        <li>Rozetler ve seri kalkanı</li>
-        <li>Ana ekran widget’ları</li>
-        <li>Temalar ve uygulama simgeleri</li>
-        <li>Reklamsız kullanım</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="block wrap" id="destek">
-    <h2>Destek ve politikalar</h2>
-    <div class="links">
-      <a href="/support/"><h3>Destek</h3><p>Yardım veya geri bildirim için bize yaz.</p></a>
-      <a href="/privacy/"><h3>Gizlilik Politikası</h3><p>Verilerin nasıl işlendiğini ve hangi hizmetlerin kullanıldığını incele.</p></a>
-      <a href="/terms/"><h3>Kullanım Koşulları</h3><p>Ödev Odak hizmetinin kullanım şartları.</p></a>
-      <a href="/account-deletion/"><h3>Hesap Silme</h3><p>Hesabını ve ilişkili verileri nasıl sileceğini öğren.</p></a>
-    </div>
-  </section>
+  </div>
+</div>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>© 2026 Ödev Odak</span>
-    <a href="mailto:destek@odevodak.com">destek@odevodak.com</a>
+<section class="wrap" id="nasil">
+  <div class="head">
+    <h2>Üç adımda <span class="u">odak</span></h2>
+    <p>Ödev Odak yasakçı değil. Kuralı sen koyarsın, uygulama sadece sözünü tutmana yardım eder.</p>
   </div>
-</footer>
+  <ol class="steps">
+    <li><h3>Ödevlerini ekle</h3><p>Elle yaz ya da Google Classroom’u bağla, ödevlerin teslim tarihleriyle kendiliğinden gelsin.</p></li>
+    <li><h3>Neyin bekleyeceğini seç</h3><p>Oyunlar, videolar, sosyal medya. Seçtiğin uygulamalar bugünkü ve gecikmiş ödevlerin bitene kadar sınırlanır.</p></li>
+    <li><h3>Bitir, işaretle, rahatla</h3><p>Ödevini tamamlayınca fotoğrafla doğrula. Son ödev bittiğinde uygulamaların açılır, serin bir gün uzar.</p></li>
+  </ol>
+</section>
+
+<section class="wrap">
+  <div class="head"><h2>Ödev takibinin ihtiyacı olan her şey</h2></div>
+  <div class="bento">
+    <div class="f wide">
+      <div><span class="ic"><svg><use href="#i-lock"/></svg></span><h3>Odak modu</h3><p>iPhone’un Ekran Süresi altyapısıyla seçtiğin uygulamalar ödevler bitene kadar bekler.</p></div>
+      <div class="mini-apps" aria-hidden="true"><span><svg><use href="#i-game"/></svg></span><span><svg><use href="#i-play"/></svg></span><span><svg><use href="#i-chat"/></svg></span></div>
+    </div>
+    <div class="f"><span class="ic"><svg><use href="#i-class"/></svg></span><h3>Google Classroom</h3><p>Sınıflarındaki ödevler otomatik içe aktarılır, teslim ettiklerin tamamlanmış sayılır.</p></div>
+    <div class="f"><span class="ic"><svg><use href="#i-cam"/></svg></span><h3>Fotoğrafla doğrulama</h3><p>Bitirdiğin ödevin fotoğrafını çek, tamamlandığını kanıtla.</p></div>
+    <div class="f"><span class="ic"><svg><use href="#i-flame"/></svg></span><h3>Seri takibi</h3><p>Her gün ödevlerini bitirdikçe serin uzar. Alışkanlık küçük adımlarla kurulur.</p><div class="week" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="f"><span class="ic"><svg><use href="#i-cloud"/></svg></span><h3>Bulut yedeği</h3><p>Hesabınla giriş yaptığında ödevlerin yedeklenir, telefon değişse de kaybolmaz.</p></div>
+    <div class="f parents">
+      <span class="ic"><svg><use href="#i-family"/></svg></span>
+      <div><h3>Ebeveyn kontrolü</h3><p>İsteğe bağlı. Aile hesabını bağlarsan ödev durumu paylaşılır ve odak desteklenir.</p></div>
+      <a class="btn ghost" href="/veliler/">Veliler için<svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="premium">
+  <div class="premium">
+    <div>
+      <div class="eyebrow"><svg><use href="#i-star"/></svg>Ödev Odak Premium</div>
+      <h2>Daha düzenli çalış, <span class="mark" style="animation:none">ilerlemeni gör.</span></h2>
+      <p>Premium Ödev Odak hesabına bağlanır. Aynı hesapla giriş yaptığın her cihazda açılır.</p>
+      <p>Aylık, yıllık ya da tek seferlik ömür boyu. Abonelikleri App Store ayarlarından istediğin zaman iptal edebilirsin.</p>
+    </div>
+    <div class="pbox">
+      <h3>Premium Özellikleri:</h3>
+      <ul class="plist">
+        <li><svg><use href="#i-check"/></svg>İstatistikler ve seri takvimi</li>
+        <li><svg><use href="#i-check"/></svg>Çalışma planı</li>
+        <li><svg><use href="#i-check"/></svg>Odak zamanlayıcısı ve Dinamik Ada</li>
+        <li><svg><use href="#i-check"/></svg>Sınav geri sayımı</li>
+        <li><svg><use href="#i-check"/></svg>Rozetler ve seri kalkanı</li>
+        <li><svg><use href="#i-check"/></svg>Ana ekran widget’ları</li>
+        <li><svg><use href="#i-check"/></svg>Temalar ve uygulama simgeleri</li>
+        <li><svg><use href="#i-check"/></svg>Reklamsız kullanım</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="diger">
+  <div class="head">
+    <div class="eyebrow">Cem Buğra Soybaş</div>
+    <h2>Aynı geliştiriciden</h2>
+    <p>Sade, özenli uygulamalar.</p>
+  </div>
+  <div class="others">
+    <a class="oapp" href="https://cbsoybas.com/sudoku/"><img src="https://cbsoybas.com/sudoku/icon.png" alt="" width="64" height="64"><div><h3>Sudoku App</h3><p>Kalem ve kâğıt hissiyle klasik Sudoku. iPhone, iPad ve Apple Watch.</p><span class="go">Ayrıntılar<svg><use href="#i-arrow"/></svg></span></div></a>
+    <a class="oapp" href="https://cbsoybas.com/planechat/"><img src="https://cbsoybas.com/planechat/icon.png" alt="" width="64" height="64"><div><h3>PlaneChat</h3><p>İnternet olmadan yakınındakilerle mesajlaş. Uçakta, kampta, konserde. iPhone.</p><span class="go">Ayrıntılar<svg><use href="#i-arrow"/></svg></span></div></a>
+    <a class="oapp all" href="https://cbsoybas.com/"><span class="stack"><img src="/logo.png" alt="" width="48" height="48"><img src="https://cbsoybas.com/sudoku/icon.png" alt="" width="48" height="48"><img src="https://cbsoybas.com/planechat/icon.png" alt="" width="48" height="48"></span><div><h3>Tüm uygulamalar</h3><span class="go">cbsoybas.com<svg><use href="#i-arrow"/></svg></span></div></a>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <h2 class="fh">Destek ve politikalar</h2>
+  <div class="fgrid">
+    <a href="/support/"><strong>Destek<svg><use href="#i-arrow"/></svg></strong><span>Yardım veya geri bildirim için bize yaz.</span></a>
+    <a href="/privacy/"><strong>Gizlilik Politikası<svg><use href="#i-arrow"/></svg></strong><span>Verilerin nasıl işlendiğini ve hangi hizmetlerin kullanıldığını incele.</span></a>
+    <a href="/terms/"><strong>Kullanım Koşulları<svg><use href="#i-arrow"/></svg></strong><span>Ödev Odak hizmetinin kullanım şartları.</span></a>
+    <a href="/account-deletion/"><strong>Hesap Silme<svg><use href="#i-arrow"/></svg></strong><span>Hesabını ve ilişkili verileri nasıl sileceğini öğren.</span></a>
+  </div>
+  <div class="copy"><span>© 2026 <b>Ödev Odak</b></span><span>destek@odevodak.com</span></div>
+</div></footer>
 
 <script>
-(function () {
-  var tasks = document.querySelectorAll('#tasks .task');
-  var lock = document.getElementById('lock');
-  var title = document.getElementById('lockTitle');
-  var text = document.getElementById('lockText');
-  var bar = document.getElementById('bar');
-  var flame = document.getElementById('flame');
-  var streak = document.getElementById('streak');
-  var total = tasks.length;
-
-  function show(done) {
-    tasks.forEach(function (t, i) { t.classList.toggle('done', i < done); });
-    bar.style.width = (done / total * 100) + '%';
-    var left = total - done;
-    lock.classList.toggle('open', left === 0);
-    title.textContent = left === 0 ? 'Uygulamaların açıldı' : 'Odak modu açık';
-    text.textContent = left === 0 ? 'Bugünkü ödevlerin bitti. Tebrikler!' : left + ' ödev kaldı. Bitince uygulamaların açılır.';
-    streak.textContent = left === 0 ? '7' : '6';
-    if (left === 0) { flame.classList.remove('bump'); void flame.offsetWidth; flame.classList.add('bump'); }
+(function(){
+  var screen=document.getElementById('screen'),left=document.getElementById('left'),days=document.getElementById('days'),streak=document.getElementById('streak'),pct=document.getElementById('pct'),ring=document.getElementById('ringfg');
+  var btns=[].slice.call(document.querySelectorAll('.hw button')),C=163.4;
+  function update(){
+    var n=btns.filter(function(b){return b.getAttribute('aria-pressed')!=='true'}).length,p=Math.round((btns.length-n)/btns.length*100);
+    left.textContent=n;pct.textContent='%'+p;ring.style.strokeDashoffset=C*(1-p/100);
+    var wasDone=screen.classList.contains('done');
+    screen.classList.toggle('done',n===0);
+    days.textContent=n===0?7:6;
+    if(n===0&&!wasDone){streak.classList.remove('bump');void streak.offsetWidth;streak.classList.add('bump')}
   }
-
-  // Hareketi azaltanlar son hali sabit görür.
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { show(total); return; }
-
-  var step = 0;
-  show(0);
-  setInterval(function () {
-    step = (step + 1) % (total + 3);
-    show(Math.min(step, total));
-  }, 1700);
+  btns.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');update()})});
 })();
 </script>
 </body>
