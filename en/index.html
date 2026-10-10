@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ödev Odak · Homework first, then everything else</title>
+<meta name="description" content="Ödev Odak is an iPhone and iPad app that tracks your homework and limits distracting apps until it’s done.">
+<link rel="canonical" href="https://www.odevodak.com/en/">
+<link rel="alternate" hreflang="tr" href="https://www.odevodak.com/">
+<link rel="alternate" hreflang="en" href="https://www.odevodak.com/en/">
+<link rel="alternate" hreflang="de" href="https://www.odevodak.com/de/">
+<link rel="alternate" hreflang="x-default" href="https://www.odevodak.com/en/">
+<meta name="apple-itunes-app" content="app-id=6811425764">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ödev Odak">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://www.odevodak.com/en/">
+<meta property="og:title" content="Ödev Odak · Homework first, then everything else">
+<meta property="og:description" content="Ödev Odak is an iPhone and iPad app that tracks your homework and limits distracting apps until it’s done.">
+<meta property="og:image" content="https://www.odevodak.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ödev Odak">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#15122E">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;800;900&family=Figtree:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap">
+<style>
+/* Layout: kareli defter (dot-grid) zemini; fosforlu kalem vurgusu tek cesur nokta. Hero: dev başlık + dokunulabilir telefon. Ardından adım şeridi, bento özellik ızgarası, Premium kartı, footer. */
+:root{
+  --bg:#15122E; --bg2:#1B1739; --card:#221D47; --card2:#2A2455; --line:#352E6B; --dot:#2A2457;
+  --fg:#F4F1FF; --muted:#A9A2D8; --hl:#FFE066; --hl-ink:#1E1800; --lav:#B9A8FF; --ok:#7BE0A8; --lock:#FF8A80;
+  --frame:#0B0920; --glow:rgba(185,168,255,.18);
+  --display:'Gabarito','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --body:'Figtree','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --hand:'Caveat','Bradley Hand','Comic Sans MS',cursive;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#F7F5FF; --bg2:#EFEBFF; --card:#FFFFFF; --card2:#F3F0FF; --line:#DDD6F6; --dot:#D9D2F2;
+  --fg:#17133A; --muted:#5D5791; --hl:#FFD84D; --hl-ink:#1E1800; --lav:#5B44D0; --ok:#12804F; --lock:#D2453A;
+  --frame:#17133A; --glow:rgba(91,68,208,.12); color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#F7F5FF; --bg2:#EFEBFF; --card:#FFFFFF; --card2:#F3F0FF; --line:#DDD6F6; --dot:#D9D2F2;
+  --fg:#17133A; --muted:#5D5791; --hl:#FFD84D; --hl-ink:#1E1800; --lav:#5B44D0; --ok:#12804F; --lock:#D2453A;
+  --frame:#17133A; --glow:rgba(91,68,208,.12); color-scheme:light}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%}
+img{max-width:100%}
+body{margin:0;padding-inline:1rem;padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px);background-color:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:26px 26px;color:var(--fg);font:400 1.02rem/1.6 var(--body);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--hl);outline-offset:3px;border-radius:8px}
+.wrap{max-width:72rem;margin-inline:auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.02}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font:600 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--lav)}
+.eyebrow svg{width:1rem;height:1rem}
+
+/* NAV */
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + .75rem);z-index:10;margin-top:.75rem}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;background:color-mix(in srgb,var(--card) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:.5rem .6rem .5rem .9rem}
+.logo{display:flex;align-items:center;gap:.6rem;font:800 1.12rem var(--display);text-decoration:none;letter-spacing:-.01em}
+.logo img{width:1.9rem;height:1.9rem;border-radius:.55rem;display:block}
+.links{display:flex;gap:.25rem;flex-wrap:wrap;font-size:.92rem;font-weight:500}
+.links a{text-decoration:none;color:var(--muted);padding:.45rem .8rem;border-radius:999px;transition:background .2s,color .2s}
+.links a:hover{color:var(--fg);background:var(--card2)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding-block:5rem 5.5rem;position:relative}
+.hero>*{min-width:0}
+.hero h1{font-size:clamp(3rem,8.4vw,6.4rem);font-weight:900;letter-spacing:-.035em;margin-block:1.2rem 1.6rem}
+.hero h1 .l2{display:block}
+.mark{position:relative;display:inline;color:var(--hl-ink);padding-inline:.12em;margin-inline:-.06em;
+  background:linear-gradient(100deg,transparent .4%,var(--hl) 1.2%,var(--hl) 98%,transparent 99.6%) no-repeat 0 62%/100% 74%;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:.12em .3em .18em .35em;animation:swipe 1s .35s cubic-bezier(.65,0,.25,1) both}
+@keyframes swipe{from{background-size:0% 74%;color:var(--fg)}60%{color:var(--fg)}to{background-size:100% 74%;color:var(--hl-ink)}}
+.lead{font-size:1.2rem;max-width:33rem;color:var(--muted);margin:0}
+.lead b{color:var(--fg);font-weight:700}
+.cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-block:2rem 1.25rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.5rem;border-radius:1rem;font-weight:700;text-decoration:none;border:1.5px solid var(--line);transition:transform .2s,box-shadow .2s,background .2s}
+.btn svg{width:1.2rem;height:1.2rem}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg);box-shadow:0 .35rem 0 var(--hl)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 .55rem 0 var(--hl)}
+.btn.ghost:hover{background:var(--card)}
+.small{font-size:.92rem;color:var(--muted);max-width:30rem;margin:0}
+
+/* PHONE — gerçek uygulamanın arayüzü: açık iOS zemini, beyaz kartlar, indigo→mor degrade hedef kartı, yüzen sekme çubuğu */
+.stage{position:relative;justify-self:center;width:100%;max-width:21.5rem}
+.stage::before{content:"";position:absolute;inset:6% -4% -2%;background:radial-gradient(closest-side,var(--glow),transparent);z-index:-1}
+.phone{width:100%;background:#0B0920;border-radius:3.1rem;padding:.55rem;box-shadow:0 40px 80px -30px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.1);transform:rotate(2deg);transition:transform .5s}
+.phone:hover{transform:rotate(0)}
+.screen{--a-bg:#F6F7FB;--a-card:#FFFFFF;--a-ink:#141A33;--a-mut:#7A8099;--a-line:#E8EAF2;--a-ind:#4F46E5;--a-vio:#7C3AED;--a-ok:#16A34A;--a-chip:#EEF0F7;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Figtree",system-ui,sans-serif;color:var(--a-ink);
+  background:var(--a-bg);border-radius:2.6rem;padding:.7rem 1rem 5.2rem;position:relative;overflow:hidden;display:grid;gap:.8rem;align-content:start;min-height:40rem;color-scheme:light}
+.sbar{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:.86rem;padding:.15rem .7rem 0;height:1.9rem}
+.sbar .isl{width:5.6rem;height:1.55rem;border-radius:999px;background:#0B0920}
+.sbar .ic{display:flex;gap:.3rem;align-items:center}
+.sbar .ic svg{height:.72rem;width:auto;fill:var(--a-ink)}
+.brand{display:flex;align-items:center;gap:.5rem;font-size:.66rem;font-weight:600;letter-spacing:.16em;margin-top:.3rem}
+.brand img{width:1.5rem;height:1.5rem;border-radius:.42rem;display:block}
+.ahead{display:flex;justify-content:space-between;align-items:flex-end;gap:.5rem}
+.ahead h3{font-size:1.6rem;line-height:1.1;font-weight:700;font-family:inherit;letter-spacing:-.02em}
+.ahead small{display:block;font-size:.72rem;color:var(--a-mut);margin-top:.25rem;font-weight:400}
+.streak{display:inline-flex;align-items:center;gap:.3rem;font-size:.76rem;font-weight:700;font-family:inherit;color:#B45309;background:#FFF4E0;padding:.32rem .6rem .32rem .45rem;border-radius:999px;white-space:nowrap}
+.streak svg{width:.9rem;height:.9rem;color:#F59E0B}
+.streak.bump{animation:bump .5s}
+@keyframes bump{50%{transform:scale(1.18)}}
+.goal{border-radius:1.25rem;padding:.95rem 1rem 1.05rem;color:#fff;background:linear-gradient(135deg,var(--a-ind),var(--a-vio));box-shadow:0 12px 24px -12px rgba(79,70,229,.7);display:grid;gap:.75rem;position:relative;overflow:hidden}
+.goal::after{content:"";position:absolute;width:9rem;height:9rem;right:-3rem;bottom:-4rem;border-radius:50%;background:rgba(255,255,255,.08)}
+.goal .top{display:flex;justify-content:space-between;align-items:center;font-size:.58rem;font-weight:700;letter-spacing:.14em}
+.pill{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:600;letter-spacing:0;background:rgba(255,255,255,.18);padding:.25rem .55rem;border-radius:999px}
+.pill::before{content:"";width:.42rem;height:.42rem;border-radius:50%;background:#86EFAC;box-shadow:0 0 0 0 rgba(134,239,172,.7);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 .4rem transparent}100%{box-shadow:0 0 0 0 transparent}}
+.goal .mid{display:flex;align-items:center;gap:.9rem;position:relative;z-index:1}
+.ring{flex:none;width:4.1rem;height:4.1rem;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}
+.ring .bg{stroke:rgba(255,255,255,.25)}
+.ring .fg{stroke:#fff;stroke-linecap:round;stroke-dasharray:163.4;stroke-dashoffset:163.4;transition:stroke-dashoffset .6s cubic-bezier(.4,0,.2,1)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:.95rem;font-weight:700}
+.goal .msg strong{display:block;font-size:.98rem;line-height:1.25;font-weight:700}
+.goal .msg strong+span{display:block;font-size:.66rem;opacity:.85;margin-top:.3rem;line-height:1.35}
+.goal .apps{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;font-size:.6rem;opacity:.95;position:relative;z-index:1}
+.goal .apps em{font-style:normal;display:inline-flex;align-items:center;gap:.25rem;background:rgba(255,255,255,.16);padding:.18rem .5rem;border-radius:999px;font-weight:600;transition:background .4s}
+.goal .apps em svg{width:.62rem;height:.62rem}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.acts span{display:flex;justify-content:center;align-items:center;gap:.35rem;font-size:.74rem;font-weight:600;padding:.62rem .4rem;border-radius:.85rem}
+.acts span svg{width:.85rem;height:.85rem}
+.acts .p{background:linear-gradient(135deg,var(--a-ind),var(--a-vio));color:#fff}
+.acts .o{background:var(--a-card);color:var(--a-ind);border:1px solid var(--a-line)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--a-chip);border-radius:.8rem;padding:.2rem;font-size:.72rem;font-weight:600;color:var(--a-mut);text-align:center}
+.seg span{padding:.4rem}
+.seg .on{background:var(--a-card);color:var(--a-ind);border-radius:.62rem;box-shadow:0 1px 3px rgba(20,26,51,.1)}
+.list-h{font-size:.7rem;font-weight:600;color:var(--a-mut);margin:.1rem .2rem -.2rem}
+.hw{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.hw button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;gap:.65rem;align-items:center;padding:.65rem .7rem;background:var(--a-card);border-radius:1rem;box-shadow:0 1px 2px rgba(20,26,51,.06);transition:opacity .3s}
+.hw button:focus-visible{outline:2.5px solid var(--a-ind);outline-offset:2px}
+.tick{flex:none;width:1.3rem;height:1.3rem;border-radius:50%;border:2px solid #C7CBE0;display:grid;place-items:center;transition:background .25s,border-color .25s}
+.tick svg{width:.72rem;height:.72rem;stroke:#fff;opacity:0;transform:scale(.4);transition:.25s}
+.hw .t{min-width:0;flex:1;display:grid;line-height:1.3}
+.hw strong{font-size:.78rem;font-weight:600;transition:color .25s}
+.hw .sub{font-size:.66rem;color:var(--a-mut)}
+.hw small{display:inline-flex;align-items:center;gap:.2rem;font-size:.58rem;font-weight:600;color:var(--a-ind);background:#EEF0FF;padding:.2rem .45rem;border-radius:999px;white-space:nowrap}
+.hw small svg{width:.7rem;height:.7rem}
+.hw button[aria-pressed="true"] .tick{background:var(--a-ok);border-color:var(--a-ok)}
+.hw button[aria-pressed="true"] .tick svg{opacity:1;transform:none}
+.hw button[aria-pressed="true"] strong{color:var(--a-mut);text-decoration:line-through}
+.hw button[aria-pressed="true"]{opacity:.75}
+.hw li:first-child .tick{animation:hint 2.2s 1.6s 3}
+@keyframes hint{0%,100%{box-shadow:0 0 0 0 rgba(79,70,229,.35)}50%{box-shadow:0 0 0 .4rem rgba(79,70,229,0)}}
+.tabbar{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);display:flex;gap:.2rem;padding:.25rem;background:rgba(255,255,255,.92);border-radius:999px;box-shadow:0 6px 18px -6px rgba(20,26,51,.25)}
+.tabbar span{display:grid;justify-items:center;gap:.1rem;font-size:.55rem;font-weight:600;padding:.4rem .95rem;border-radius:999px;color:var(--a-ink)}
+.tabbar span svg{width:1rem;height:1rem}
+.tabbar .on{background:var(--a-chip)}
+.screen.done .pill::before{background:rgba(255,255,255,.6);animation:none}
+.screen.done .goal .apps em{background:rgba(134,239,172,.28)}
+.screen .when-done{display:none}
+.screen.done .when-done{display:block}
+.screen.done .when-todo{display:none}
+
+/* SECTIONS */
+section{padding-block:5.5rem}
+.head{display:grid;gap:1rem;max-width:44rem;margin-bottom:3rem}
+.head h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-.03em}
+.head p{margin:0;color:var(--muted);font-size:1.15rem;max-width:36rem}
+.u{background:linear-gradient(var(--hl),var(--hl)) no-repeat 0 92%/100% .14em;padding-bottom:.04em}
+
+/* STEPS */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;counter-reset:s;position:relative}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:1.6rem;padding:1.8rem 1.7rem 2rem;display:grid;gap:.7rem;align-content:start;min-width:0;position:relative}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:1rem;background:var(--hl);color:var(--hl-ink);font:900 1.7rem var(--display);margin-bottom:.6rem;transform:rotate(-4deg)}
+.steps li:nth-child(2)::before{transform:rotate(3deg)}
+.steps li:not(:last-child)::after{content:"";position:absolute;top:3.4rem;right:-1.25rem;width:1.25rem;border-top:2px dashed var(--line)}
+.steps h3{font-size:1.4rem;font-weight:800;letter-spacing:-.01em}
+.steps p{margin:0;color:var(--muted)}
+
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.f{background:var(--card);border:1px solid var(--line);border-radius:1.6rem;padding:1.7rem;display:grid;gap:.6rem;align-content:start;min-width:0;transition:transform .3s,border-color .3s}
+.f:hover{transform:translateY(-3px);border-color:var(--lav)}
+.f .ic{width:2.8rem;height:2.8rem;border-radius:.9rem;background:var(--card2);display:grid;place-items:center;color:var(--lav);margin-bottom:.5rem}
+.f .ic svg{width:1.4rem;height:1.4rem}
+.f h3{font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
+.f p{margin:0;color:var(--muted)}
+.f.wide{grid-column:span 2;grid-template-columns:1fr auto;align-items:center;gap:1.5rem}
+.f.wide>div{display:grid;gap:.6rem;min-width:0}
+.mini-apps{display:flex;gap:.7rem}
+.mini-apps span{width:3.6rem;height:3.6rem;border-radius:1.1rem;display:grid;place-items:center;position:relative;filter:grayscale(.85) brightness(.75)}
+.mini-apps span svg{width:1.6rem;height:1.6rem;color:#fff}
+.mini-apps span:nth-child(1){background:linear-gradient(135deg,#FF7A59,#E8467C);transform:rotate(-6deg)}
+.mini-apps span:nth-child(2){background:linear-gradient(135deg,#FF5A5F,#C2185B)}
+.mini-apps span:nth-child(3){background:linear-gradient(135deg,#7C6CFF,#3FA9F5);transform:rotate(6deg)}
+.mini-apps span::after{content:"";position:absolute;right:-.3rem;bottom:-.3rem;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--lock) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E") center/62% no-repeat;border:2.5px solid var(--card)}
+.week{display:flex;gap:.35rem;margin-top:.6rem}
+.week i{width:1.5rem;height:1.5rem;border-radius:.45rem;background:var(--hl)}
+.week i:last-child{background:transparent;border:2px dashed var(--line)}
+.f.parents{grid-column:1/-1;grid-template-columns:auto 1fr auto;align-items:center;gap:1.5rem;background:linear-gradient(120deg,var(--card),var(--card2))}
+.f.parents .ic{margin:0}
+.f.parents>div{display:grid;gap:.4rem;min-width:0}
+.f.parents a.btn{white-space:nowrap}
+
+/* PREMIUM */
+.premium{position:relative;background:var(--card);border:1px solid var(--line);border-radius:2.2rem;padding:clamp(1.6rem,4vw,3.5rem);display:grid;grid-template-columns:1fr 1fr;gap:3rem;overflow:hidden}
+.premium::before{content:"";position:absolute;width:30rem;height:30rem;right:-10rem;top:-12rem;border-radius:50%;background:radial-gradient(closest-side,var(--glow),transparent);pointer-events:none}
+.premium>*{min-width:0;position:relative}
+.premium h2{font-size:clamp(2.2rem,5.4vw,3.8rem);font-weight:900;letter-spacing:-.035em;margin-block:1rem}
+.premium .tag{font:800 clamp(1.25rem,2.6vw,1.6rem)/1.2 var(--display);margin:0 0 1.4rem}
+.premium p{color:var(--muted);margin:0 0 1rem}
+.pbox h3{font:600 .78rem var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.plist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.plist li{display:flex;gap:.7rem;align-items:flex-start;background:var(--card2);border-radius:1rem;padding:.85rem .9rem;font-weight:600;font-size:.95rem;line-height:1.35}
+.plist li svg{flex:none;width:1.15rem;height:1.15rem;color:var(--hl-ink);background:var(--hl);border-radius:50%;padding:.2rem;margin-top:.05rem}
+
+
+/* DİĞER UYGULAMALAR */
+.others{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.oapp{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:1.6rem;padding:1.5rem;transition:transform .3s,border-color .3s;min-width:0}
+.oapp:hover{transform:translateY(-3px);border-color:var(--lav)}
+.oapp img{width:4rem;height:4rem;border-radius:1rem;display:block;box-shadow:0 8px 18px -10px rgba(0,0,0,.5)}
+.oapp div{display:grid;gap:.35rem;min-width:0}
+.oapp h3{font-size:1.3rem;font-weight:800}
+.oapp p{margin:0;color:var(--muted);font-size:.95rem}
+.oapp .go{display:inline-flex;align-items:center;gap:.3rem;font-weight:600;color:var(--lav);font-size:.92rem;margin-top:.3rem}
+.oapp .go svg{width:.9rem;height:.9rem;transition:transform .25s}
+.oapp:hover .go svg{transform:translate(2px,-2px)}
+.oapp.all{background:linear-gradient(135deg,var(--card),var(--card2));grid-template-columns:1fr;align-content:space-between}
+.oapp.all .stack{display:flex}
+.oapp.all .stack img{width:3rem;height:3rem;border-radius:.8rem;border:3px solid var(--card)}
+.oapp.all .stack img+img{margin-left:-.8rem}
+@media (max-width:920px){.others{grid-template-columns:1fr 1fr}.oapp.all{grid-column:1/-1}}
+@media (max-width:600px){.others{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{padding-block:4rem 3rem}
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.fgrid a{display:grid;gap:.4rem;text-decoration:none;padding:1.3rem;border-radius:1.2rem;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 60%,transparent);transition:border-color .25s,background .25s;height:100%}
+.fgrid a:hover{border-color:var(--hl);background:var(--card)}
+.fgrid strong{font:800 1.05rem var(--display);display:flex;justify-content:space-between;align-items:center}
+.fgrid strong svg{width:1rem;height:1rem;color:var(--muted);transition:transform .25s}
+.fgrid a:hover strong svg{transform:translate(2px,-2px);color:var(--hl)}
+.fgrid span{color:var(--muted);font-size:.9rem;line-height:1.45}
+.fh{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:900;letter-spacing:-.02em;margin-bottom:1.5rem}
+.copy{margin-top:2.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+.copy b{font:800 1rem var(--display);color:var(--fg)}
+
+@media (max-width:920px){
+  .hero{grid-template-columns:1fr;gap:3.5rem;padding-block:3.5rem 4rem}
+  .premium{grid-template-columns:1fr;gap:2rem}
+  .steps{grid-template-columns:1fr}
+  .steps li:not(:last-child)::after{display:none}
+  .bento{grid-template-columns:1fr 1fr}
+  .f.wide{grid-column:1/-1}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  nav .wrap{border-radius:1.4rem;justify-content:center}
+  .links{justify-content:center}
+  .links a{padding:.35rem .55rem}
+  .bento,.fgrid,.plist{grid-template-columns:1fr}
+  .f.wide{grid-template-columns:1fr}
+  .f.parents{grid-template-columns:1fr}
+  section{padding-block:4rem}
+  .note{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+.langs{display:inline-flex;gap:2px;padding:2px;border:1px solid var(--line);border-radius:999px}.langs a{font-size:.78rem;font-weight:700;letter-spacing:.04em;text-decoration:none;color:var(--muted);padding:.3rem .6rem;border-radius:999px}.langs a[aria-current]{background:var(--card2);color:var(--fg)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Ödev Odak", "operatingSystem": "iOS, iPadOS", "applicationCategory": "EducationalApplication", "inLanguage": "en", "url": "https://www.odevodak.com/en/", "downloadUrl": "https://apps.apple.com/app/id6811425764", "image": "https://www.odevodak.com/logo.png", "description": "An iPhone and iPad app that tracks your homework and limits distracting apps until it’s done.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-game" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r=".6" fill="currentColor"/><circle cx="17.5" cy="13.5" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5.5h16v10H10l-4.5 3.5v-3.5H4z"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c.6 3.2 5.5 5.6 5.5 11a5.5 5.5 0 0 1-11 0c0-2.6 1.4-4.2 2.6-5.2.2 1.7 1 2.8 2.2 3.2-.5-3.1-.3-6.2.7-9z"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3.5 8h4l1.5-2.5h6L16.5 8h4v11h-17z"/><circle cx="12" cy="13.2" r="3.4"/></symbol>
+  <symbol id="i-class" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="13" rx="2"/><circle cx="12" cy="10" r="2.2"/><path d="M8.5 15.5c.8-1.6 2-2.3 3.5-2.3s2.7.7 3.5 2.3M8 21h8"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="7" r="3"/><circle cx="17" cy="9.5" r="2.3"/><path d="M2.5 20c.5-3.8 2.7-6 5.5-6s5 2.2 5.5 6M13.5 20c.4-2.8 1.7-4.5 3.5-4.5s3.1 1.7 3.5 4.5"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 19a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.5A3.8 3.8 0 0 1 17.5 19z"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8C7 7.2 5.5 8.1 4.7 9.6c-1.7 2.9-.4 7.3 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.9-1.1-2.9-4zM14.1 5.6c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></symbol>
+</svg>
+
+<nav><div class="wrap">
+  <a class="logo" href="/en/"><img src="/logo.png" alt="" width="30" height="30">Ödev Odak</a>
+  <div class="links">
+    <a href="#how">How it works</a>
+    <a href="/en/parents/">Parents</a>
+    <a href="#premium">Premium</a>
+    <a href="/en/support/">Support</a>
+    <a href="/en/privacy/">Privacy</a>
+  </div>
+  <span class="langs" role="group" aria-label="Language"><a href="/" hreflang="tr" lang="tr" data-lang="tr">TR</a><a href="/en/" hreflang="en" lang="en" data-lang="en" aria-current="true">EN</a><a href="/de/" hreflang="de" lang="de" data-lang="de">DE</a></span>
+</div></nav>
+
+<main class="wrap">
+<div class="hero">
+  <div>
+    <div class="eyebrow"><svg><use href="#i-phone"/></svg>For iPhone and iPad</div>
+    <h1>Homework first. <span class="l2"><span class="mark">Then everything else.</span></span></h1>
+    <p class="lead">Add your homework and pick the apps that distract you. <b>They wait until your homework is done,</b> then unlock on their own.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://apps.apple.com/app/id6811425764"><svg><use href="#i-apple"/></svg>Download on the App Store</a>
+      <a class="btn ghost" href="#how">How does it work?<svg><use href="#i-down"/></svg></a>
+    </div>
+    <p class="small">Free. Add Premium for statistics, an exam countdown, themes and no ads.</p>
+  </div>
+
+  <div class="stage">
+    <div class="phone">
+      <div class="screen" id="screen" aria-label="Status panel">
+        <div class="sbar"><span>22:28</span><span class="isl"></span><span class="ic"><svg viewBox="0 0 18 12"><path d="M9 2.2c2.6 0 5 1 6.8 2.7l1.2-1.3A11.4 11.4 0 0 0 9 .4 11.4 11.4 0 0 0 1 3.6l1.2 1.3A9.7 9.7 0 0 1 9 2.2zm0 3.6c1.6 0 3.1.6 4.3 1.7l1.2-1.3A8 8 0 0 0 9 4a8 8 0 0 0-5.5 2.2l1.2 1.3A6.3 6.3 0 0 1 9 5.8zm0 3.6c.7 0 1.3.3 1.8.7L9 12l-1.8-1.9c.5-.4 1.1-.7 1.8-.7z"/></svg><svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="19" height="8" rx="1.8"/><rect x="24" y="4" width="1.6" height="4" rx=".8" opacity=".4"/></svg></span></div>
+        <div class="brand"><img src="/logo.png" alt="" width="24" height="24">ÖDEV ODAK</div>
+        <div class="ahead"><h3>Today</h3><span class="streak" id="streak"><svg><use href="#i-flame"/></svg><span id="days">6</span> days</span></div>
+        <div class="goal">
+          <div class="top"><span>TODAY'S GOAL</span><span class="pill"><span class="when-todo">Focus mode on</span><span class="when-done">Focus off</span></span></div>
+          <div class="mid">
+            <div class="ring"><svg viewBox="0 0 60 60"><circle class="bg" cx="30" cy="30" r="26"/><circle class="fg" id="ringfg" cx="30" cy="30" r="26"/></svg><b id="pct">0%</b></div>
+            <div class="msg">
+              <div class="when-todo"><strong><span id="left">3</span> left to go.</strong><span>Your apps unlock when you’re done.</span></div>
+              <div class="when-done"><strong>Done for today. Time is yours!</strong><span>Small steps, big relief.</span></div>
+            </div>
+          </div>
+          <div class="apps">Blocked apps: <em><svg><use href="#i-game"/></svg>Games</em><em><svg><use href="#i-play"/></svg>Video</em><em><svg><use href="#i-chat"/></svg>Social</em></div>
+        </div>
+        <div class="acts" aria-hidden="true"><span class="p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add homework</span><span class="o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.3-4.3L4 9M4 4v5h5M4 13a8 8 0 0 0 14.3 4.3L20 15m0 5v-5h-5"/></svg>Classroom</span></div>
+        <div class="seg" aria-hidden="true"><span class="on">Today</span><span>All</span></div>
+        <h4 class="list-h">Today’s homework</h4>
+        <ul class="hw">
+          <li><button type="button" id="hw1" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><strong>Math · Derivatives quiz</strong><span class="sub">Google Classroom</span></span><small><svg><use href="#i-cam"/></svg>Photo</small></button></li>
+          <li><button type="button" id="hw2" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><strong>Chemistry · Mole problems</strong><span class="sub">Pages 84–86</span></span><small><svg><use href="#i-cam"/></svg>Photo</small></button></li>
+          <li><button type="button" id="hw3" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><strong>English · Essay</strong><span class="sub">Due tomorrow</span></span><small><svg><use href="#i-cam"/></svg>Photo</small></button></li>
+        </ul>
+        <div class="tabbar" aria-hidden="true"><span class="on"><svg viewBox="0 0 24 24" fill="#141A33"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>Homework</span><span><svg viewBox="0 0 24 24" fill="none" stroke="#141A33" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<section class="wrap" id="how">
+  <div class="head">
+    <h2><span class="u">Focus</span> in three steps</h2>
+    <p>Ödev Odak isn’t about bans. You set the rule; the app just helps you keep your word.</p>
+  </div>
+  <ol class="steps">
+    <li><h3>Add your homework</h3><p>Type it in or connect Google Classroom so assignments arrive on their own, with due dates.</p></li>
+    <li><h3>Choose what waits</h3><p>Games, videos, social media. The apps you choose are limited until today’s and overdue homework is done.</p></li>
+    <li><h3>Finish, tick, relax</h3><p>When you’re done, verify it with a photo. Once the last assignment is finished, your apps unlock and your streak grows by a day.</p></li>
+  </ol>
+</section>
+
+<section class="wrap">
+  <div class="head"><h2>Everything homework tracking needs</h2></div>
+  <div class="bento">
+    <div class="f wide">
+      <div><span class="ic"><svg><use href="#i-lock"/></svg></span><h3>Focus mode</h3><p>Using the iPhone’s Screen Time technology, the apps you choose wait until your homework is done.</p></div>
+      <div class="mini-apps" aria-hidden="true"><span><svg><use href="#i-game"/></svg></span><span><svg><use href="#i-play"/></svg></span><span><svg><use href="#i-chat"/></svg></span></div>
+    </div>
+    <div class="f"><span class="ic"><svg><use href="#i-class"/></svg></span><h3>Google Classroom</h3><p>Assignments from your classes are imported automatically, and work you turn in counts as done.</p></div>
+    <div class="f"><span class="ic"><svg><use href="#i-cam"/></svg></span><h3>Photo verification</h3><p>Take a photo of your finished homework to show it’s done.</p></div>
+    <div class="f"><span class="ic"><svg><use href="#i-flame"/></svg></span><h3>Streaks</h3><p>Every day you finish your homework, your streak grows. Habits are built in small steps.</p><div class="week" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="f"><span class="ic"><svg><use href="#i-cloud"/></svg></span><h3>Cloud backup</h3><p>Sign in and your homework is backed up, so it isn’t lost even if you change phones.</p></div>
+    <div class="f parents">
+      <span class="ic"><svg><use href="#i-family"/></svg></span>
+      <div><h3>Parental controls</h3><p>Optional. Connect a parent’s account to share homework status and support focus.</p></div>
+      <a class="btn ghost" href="/en/parents/">For parents<svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="premium">
+  <div class="premium">
+    <div>
+      <div class="eyebrow"><svg><use href="#i-star"/></svg>Ödev Odak Premium</div>
+      <h2>Study more steadily, <span class="mark" style="animation:none">see your progress.</span></h2>
+      <p>Premium is linked to your Ödev Odak account and unlocks on every device where you sign in with it.</p>
+      <p>Monthly, yearly or a one-time lifetime purchase. Cancel subscriptions anytime in your App Store settings.</p>
+    </div>
+    <div class="pbox">
+      <h3>Premium features:</h3>
+      <ul class="plist">
+        <li><svg><use href="#i-check"/></svg>Statistics and streak calendar</li>
+        <li><svg><use href="#i-check"/></svg>Study plan</li>
+        <li><svg><use href="#i-check"/></svg>Focus timer and Dynamic Island</li>
+        <li><svg><use href="#i-check"/></svg>Exam countdown</li>
+        <li><svg><use href="#i-check"/></svg>Badges and streak shield</li>
+        <li><svg><use href="#i-check"/></svg>Home Screen widgets</li>
+        <li><svg><use href="#i-check"/></svg>Themes and app icons</li>
+        <li><svg><use href="#i-check"/></svg>No ads</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="diger">
+  <div class="head">
+    <div class="eyebrow">Cem Buğra Soybaş</div>
+    <h2>From the same developer</h2>
+    <p>Simple, carefully made apps.</p>
+  </div>
+  <div class="others">
+    <a class="oapp" href="https://cbsoybas.com/sudoku/"><img src="https://cbsoybas.com/sudoku/icon.png" alt="" width="64" height="64"><div><h3>Sudoku App</h3><p>Classic Sudoku with a pen-and-paper feel. iPhone, iPad and Apple Watch.</p><span class="go">Details<svg><use href="#i-arrow"/></svg></span></div></a>
+    <a class="oapp" href="https://cbsoybas.com/planechat/"><img src="https://cbsoybas.com/planechat/icon.png" alt="" width="64" height="64"><div><h3>PlaneChat</h3><p>Message people nearby without internet. On a plane, camping or at a concert. iPhone.</p><span class="go">Details<svg><use href="#i-arrow"/></svg></span></div></a>
+    <a class="oapp all" href="https://cbsoybas.com/"><span class="stack"><img src="/logo.png" alt="" width="48" height="48"><img src="https://cbsoybas.com/sudoku/icon.png" alt="" width="48" height="48"><img src="https://cbsoybas.com/planechat/icon.png" alt="" width="48" height="48"></span><div><h3>All apps</h3><span class="go">cbsoybas.com<svg><use href="#i-arrow"/></svg></span></div></a>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <h2 class="fh">Support and policies</h2>
+  <div class="fgrid">
+    <a href="/en/support/"><strong>Support<svg><use href="#i-arrow"/></svg></strong><span>Write to us for help or feedback.</span></a>
+    <a href="/en/privacy/"><strong>Privacy Policy<svg><use href="#i-arrow"/></svg></strong><span>See how your data is processed and which services are used.</span></a>
+    <a href="/en/terms/"><strong>Terms of Use<svg><use href="#i-arrow"/></svg></strong><span>The terms for using the Ödev Odak service.</span></a>
+    <a href="/en/account-deletion/"><strong>Account deletion<svg><use href="#i-arrow"/></svg></strong><span>How to delete your account and related data.</span></a>
+  </div>
+  <div class="copy"><span>© 2026 <b>Ödev Odak</b></span><span>destek@odevodak.com</span></div>
+</div></footer>
+
+<script>
+(function(){
+  var screen=document.getElementById('screen'),left=document.getElementById('left'),days=document.getElementById('days'),streak=document.getElementById('streak'),pct=document.getElementById('pct'),ring=document.getElementById('ringfg');
+  var btns=[].slice.call(document.querySelectorAll('.hw button')),C=163.4;
+  function update(){
+    var n=btns.filter(function(b){return b.getAttribute('aria-pressed')!=='true'}).length,p=Math.round((btns.length-n)/btns.length*100);
+    left.textContent=n;pct.textContent=p+'%';ring.style.strokeDashoffset=C*(1-p/100);
+    var wasDone=screen.classList.contains('done');
+    screen.classList.toggle('done',n===0);
+    days.textContent=n===0?7:6;
+    if(n===0&&!wasDone){streak.classList.remove('bump');void streak.offsetWidth;streak.classList.add('bump')}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');update()})});
+})();
+</script>
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-lang]');if(a){try{localStorage.setItem('lang',a.dataset.lang)}catch(_){}}});</script>
+</body>
+</html>

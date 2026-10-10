@@ -6,6 +6,11 @@
 <title>Ödev Odak · Önce ödev, sonra her şey</title>
 <meta name="description" content="Ödev Odak, ödevlerini takip eden ve ödevlerin bitene kadar dikkat dağıtan uygulamaları sınırlayan iPhone ve iPad uygulamasıdır.">
 <link rel="canonical" href="https://www.odevodak.com/">
+<link rel="alternate" hreflang="tr" href="https://www.odevodak.com/">
+<link rel="alternate" hreflang="en" href="https://www.odevodak.com/en/">
+<link rel="alternate" hreflang="de" href="https://www.odevodak.com/de/">
+<link rel="alternate" hreflang="x-default" href="https://www.odevodak.com/en/">
+<script>(function(){try{if(localStorage.getItem('lang')||/bot|crawl|spider|slurp|preview/i.test(navigator.userAgent))return;var ls=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||''];var c=ls.map(function(x){return (x||'').slice(0,2).toLowerCase()});if(c.indexOf('tr')>=0)return;for(var i=0;i<c.length;i++){if(c[i]==='de'){location.replace('/de/');return}if(c[i]==='en')break}location.replace('/en/')}catch(e){}})();</script>
 <meta name="apple-itunes-app" content="app-id=6811425764">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ödev Odak">
@@ -266,6 +271,7 @@ footer{padding-block:4rem 3rem}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+.langs{display:inline-flex;gap:2px;padding:2px;border:1px solid var(--line);border-radius:999px}.langs a{font-size:.78rem;font-weight:700;letter-spacing:.04em;text-decoration:none;color:var(--muted);padding:.3rem .6rem;border-radius:999px}.langs a[aria-current]{background:var(--card2);color:var(--fg)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Ödev Odak", "operatingSystem": "iOS, iPadOS", "applicationCategory": "EducationalApplication", "inLanguage": "tr", "url": "https://www.odevodak.com/", "downloadUrl": "https://apps.apple.com/tr/app/id6811425764", "image": "https://www.odevodak.com/logo.png", "description": "Ödevlerini takip eden ve ödevler bitene kadar dikkat dağıtan uygulamaları sınırlayan iPhone ve iPad uygulaması.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"}}</script>
 </head>
@@ -297,6 +303,7 @@ footer{padding-block:4rem 3rem}
     <a href="/support/">Destek</a>
     <a href="/privacy/">Gizlilik</a>
   </div>
+  <span class="langs" role="group" aria-label="Dil"><a href="/" hreflang="tr" lang="tr" data-lang="tr" aria-current="true">TR</a><a href="/en/" hreflang="en" lang="en" data-lang="en">EN</a><a href="/de/" hreflang="de" lang="de" data-lang="de">DE</a></span>
 </div></nav>
 
 <main class="wrap">
@@ -438,5 +445,6 @@ footer{padding-block:4rem 3rem}
   btns.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');update()})});
 })();
 </script>
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-lang]');if(a){try{localStorage.setItem('lang',a.dataset.lang)}catch(_){}}});</script>
 </body>
 </html>
